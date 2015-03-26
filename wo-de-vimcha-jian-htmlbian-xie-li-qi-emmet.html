@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--HTML编写利器Emmet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="./theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="./theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="./theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="./theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="./theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("./theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("./theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="./theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href=".">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="./category/vim.html">vim</a></li>
+                    <li><a href="./category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="./archives.html">归档</a>
+            </li>
+            <li>
+                <a href="./tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="./feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="./wo-de-vimcha-jian-htmlbian-xie-li-qi-emmet.html" rel="bookmark"
+        title="Permalink to 我的vim插件--HTML编写利器Emmet">我的vim插件--HTML编写利器Emmet</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-07-21T00:00:00">2014年07月21日
+</h6>
+
+
+    <!--Status:draft-->
+
+<h3>emmet简介</h3>
+<p>Emmet 项目原来叫 Zen Coding。由俄罗斯前端开发工程师 Sergey Chikuyonok 开发，后来在 Google Code 上释出 Zen Coding 项目，2012年更名为Emmet。
+Emmet 官方支持很多软件，比如 Sublime Text、Notepad++、Dreamweaver、Eclipse、Adobe Brackets 等。Emmet.vim 并非 Emmet 官方出品，它由日本 Yasuhiro Matsumoto 开发。</p>
+<h3>emmet.vim 安装</h3>
+<ul>
+<li>传统安装方式
+你可以从两个地址下载，一是Vim 插件站点，一是Github</li>
+</ul>
+<div class="highlight"><pre><span class="nb">cd</span> ~/.vim
+unzip emmet-vim.zip
+</pre></div>
+
+
+<ul>
+<li>pathogen.vim 方式管理插件
+在vim配置文件中增加：</li>
+</ul>
+<div class="highlight"><pre><span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">mattn</span><span class="o">/</span><span class="n">emmet</span><span class="o">-</span><span class="n">vim</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>然后在vim中执行：</p>
+<div class="highlight"><pre><span class="o">:</span><span class="n">BundleInstall</span>
+</pre></div>
+
+
+<h3>emmet for vim 基本用法</h3>
+<ul>
+<li>emmet在vim中的默认触发快捷键是<code>Ctrl+Y</code> + <code>,</code></li>
+<li><strong>展开缩写（Expand Abbreviation）模式</strong><br />
+在插入模式下输入<code>html5</code>或者<code>!</code>
+再输入<code>Ctrl+Y</code> + <code>,</code> (注意：仍然在插入模式下)，会得到如下html文本：</li>
+</ul>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<p>类似的缩写还有:<code>html:4s</code>, <code>html:4t</code>, <code>html:xs</code>, <code>html:xt</code></p>
+<p><strong>emmet支持的缩略词模式的语法</strong>:</p>
+<ol>
+<li><code>E、N</code>代表HTML标签</li>
+<li><code>E&gt;N</code> 代表N是E的子元素</li>
+<li><code>E+N</code> 代表N是E的同级元素</li>
+<li><code>E^N</code> 代表N是E的上级元素</li>
+<li><code>E#id</code>代表id属性</li>
+<li><code>E.class</code>代表class属性</li>
+<li><code>E{foo}</code> 标签包含文本foo</li>
+<li><code>E*n</code> 产生n个相同标签</li>
+<li><code>foo$@m*n</code> 代表foo为自增变量，起始值为m(默认为1)，即foom，foo(m+1)...foo(m+n-1);
+$同时还是占位符，如$$$表示递增值补齐为3位，不足前补零;若n前有-号，递增方向相反。</li>
+<li><code>[attr=foo]</code> 代表某一个特定属性(可自定义)</li>
+</ol>
+<p>示例:</p>
+<div class="highlight"><pre>缩写：nav&gt;div&gt;div+p^span
+<span class="nt">&lt;nav&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;div&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;p&gt;&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre>缩写:div#test&gt;span.cls
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;cls&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/div&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre>缩写:div#test&gt;span.cls1.cls2.cls3
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;test&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;cls1 cls2 cls3&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/div&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre>缩写：p{foo}
+<span class="nt">&lt;p&gt;</span>foo<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre>缩写:ul&gt;li.cls$$$@-8*3
+<span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;cls010&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;cls009&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;cls008&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre>缩写：div[attr1=foo1 attr2=foo2]
+<span class="nt">&lt;div</span> <span class="na">attr1=</span><span class="s">&quot;foo1&quot;</span> <span class="na">attr2=</span><span class="s">&quot;foo&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</pre></div>
+
+
+<p>emmet对每个html标签几乎都有缩写的支持，能极大提升书写html的效率，把更多的时间用于思考,例如:</p>
+<div class="highlight"><pre>缩写: input:t
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre>缩写: table+
+<span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre>缩写：cc:ie6
+<span class="c">&lt;!--[if lte IE 6]&gt;</span>
+
+<span class="c">&lt;![endif]--&gt;</span>
+</pre></div>
+
+
+<blockquote>
+<p>更多缩写请参考：
+http://docs.emmet.io/cheat-sheet/
+目前该插件只实现了HTML部分CSS部分尚未实现</p>
+</blockquote>
+<p>在编写HTML代码时，有时需要添加一些内容，Emmet提供了一段随机的看不懂的英文字段，作为测试数据我们就可以调用。</p>
+<div class="highlight"><pre>缩写：lorem
+Lorem harum nulla cumque facilis adipisci facilis. Facere quia sint aspernatur rerum cum culpa eum totam? Reprehenderit magni beatae alias voluptates minima. Doloremque illo eligendi cumque similique libero sed ad.
+</pre></div>
+
+
+<div class="highlight"><pre>缩写：lorem5
+Ipsum amet culpa minus enim!
+</pre></div>
+
+
+<p>也可以和其他命令结合使用，生成测试数据(在此功能上还存在缺陷,无法支持类似<code>p#id&gt;lorem4.class*4</code>这种写法)</p>
+<div class="highlight"><pre>缩写：p*4&gt;lorem4.class
+<span class="nt">&lt;p&gt;</span>Amet libero facilis maxime.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Elit vitae optio perspiciatis!<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Amet maiores odio enim.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Amet maiores deserunt vero?<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+
+<ul>
+<li><strong>扩展缩写(Wrap with Abbreviation)模式</strong><br />
+输入如下内容:</li>
+</ul>
+<div class="highlight"><pre><span class="n">test1</span>
+<span class="n">test2</span>
+<span class="n">test3</span>
+</pre></div>
+
+
+<p><code>Shift+v</code>进入可视模式，“行选取”上面三行内容，然后按键 <code>Ctrl+Y</code>+<code>,</code>,这时 Vim 的命令行会提示 <code>Tags:</code>，键入<code>ul&gt;li*</code>，然后按 Enter,会得到如下文本：</p>
+<div class="highlight"><pre><span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;</span>test1<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>test2<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>test3<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+
+<p>TODO:$#可以控制文本输出的位置 </p>
+<h3>快捷键介绍</h3>
+<ul>
+<li><code>Ctrl+Y</code> + <code>n</code>  【插入模式】跳转到下一个编辑点</li>
+<li><code>Ctrl+Y</code> + <code>N</code>  【插入模式】跳转到上一个编辑点</li>
+<li><code>Ctrl+Y</code> + <code>d</code>  【插入模式】根据光标位置选中整个标签</li>
+<li><code>Ctrl+Y</code> + <code>D</code>  【插入模式】根据光标位置选中整个标签内容</li>
+<li><code>Ctrl+Y</code> + <code>k</code>  【插入模式】【普通模式】删除标签</li>
+<li><code>Ctrl+Y</code> + <code>j</code>  【插入模式】【普通模式】分割/合并标签，单标签(没有结尾标签)和双标签切换</li>
+<li><code>Ctrl+Y</code> + <code>/</code>  【注释模式】注释标签</li>
+<li><code>Ctrl+Y</code> + <code>m</code>  【可视模式】合并行 </li>
+<li><code>Ctrl+Y</code> + <code>a</code>  【普通模式】【可视模式】通过URL生成a标签</li>
+</ul>
+<p>输入文本：http://www.sina.com.cn，按键 <code>Ctrl+Y</code> + <code>,</code></p>
+<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.sina.com.cn&quot;</span><span class="nt">&gt;</span>新浪首页<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+
+<p>居然自动取URL的HTML文本的title值作为a标签的文本，神奇！若未联入互联网，则文本为空</p>
+<ul>
+<li><code>Ctrl+Y</code> + <code>A</code>  【普通模式】【可视模式】通过URL生成引用文本</li>
+<li><code>Ctrl+Y</code> + <code>i</code>   更新img标记的图片大小，仅本地图片可用</li>
+<li><code>Ctrl+Y</code> + <code>c</code>   【可视模式】把程序代码转换为html</li>
+</ul>
+<p>高级用户可对快捷键键盘映射进行重新定义，<code>:h emmet</code>查询帮助文件，搜索 <code>emmet-customize-keymappings</code></p>
+<h3>可配置项</h3>
+<p>修改缩进值</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">user_emmet_settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="err">\</span>  <span class="err">&#39;</span><span class="n">html</span><span class="err">&#39;</span> <span class="o">:</span> <span class="p">{</span>
+  <span class="err">\</span>    <span class="err">&#39;</span><span class="n">indentation</span><span class="err">&#39;</span> <span class="o">:</span> <span class="sc">&#39; &#39;</span>
+  <span class="err">\</span>  <span class="p">},</span>
+  <span class="err">\</span><span class="p">}</span>
+</pre></div>
+
+
+<p>定义不同文件类型的简写扩展, 例如：</p>
+<div class="highlight"><pre><span class="kd">let</span> <span class="nx">g</span><span class="o">:</span><span class="nx">user_emmet_settings</span> <span class="o">=</span> <span class="p">{</span>
+<span class="err">\</span> <span class="s1">&#39;php&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span> <span class="s1">&#39;extends&#39;</span> <span class="o">:</span> <span class="s1">&#39;html&#39;</span><span class="p">,</span>
+<span class="err">\</span> <span class="s1">&#39;filters&#39;</span> <span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span>
+<span class="err">\</span> <span class="p">},</span>
+<span class="err">\</span> <span class="s1">&#39;xml&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span> <span class="s1">&#39;extends&#39;</span> <span class="o">:</span> <span class="s1">&#39;html&#39;</span><span class="p">,</span>
+<span class="err">\</span> <span class="p">},</span>
+<span class="err">\</span> <span class="s1">&#39;haml&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span> <span class="s1">&#39;extends&#39;</span> <span class="o">:</span> <span class="s1">&#39;html&#39;</span><span class="p">,</span>
+<span class="err">\</span> <span class="p">},</span>
+<span class="err">\</span><span class="p">}</span>
+<span class="kd">let</span> <span class="nx">g</span><span class="o">:</span><span class="nx">user_emmet_settings</span> <span class="o">=</span> <span class="p">{</span>
+<span class="err">\</span>  <span class="s1">&#39;lang&#39;</span> <span class="o">:</span> <span class="s1">&#39;ja&#39;</span><span class="p">,</span>
+<span class="err">\</span>  <span class="s1">&#39;html&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>    <span class="s1">&#39;filters&#39;</span> <span class="o">:</span> <span class="s1">&#39;html&#39;</span><span class="p">,</span>
+<span class="err">\</span>    <span class="s1">&#39;indentation&#39;</span> <span class="o">:</span> <span class="s1">&#39; &#39;</span>
+<span class="err">\</span>  <span class="p">},</span>
+<span class="err">\</span>  <span class="s1">&#39;perl&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>    <span class="s1">&#39;indentation&#39;</span> <span class="o">:</span> <span class="s1">&#39;  &#39;</span><span class="p">,</span>
+<span class="err">\</span>    <span class="s1">&#39;aliases&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>      <span class="s1">&#39;req&#39;</span> <span class="o">:</span> <span class="s2">&quot;require &#39;|&#39;&quot;</span>
+<span class="err">\</span>    <span class="p">},</span>
+<span class="err">\</span>    <span class="s1">&#39;snippets&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>      <span class="s1">&#39;use&#39;</span> <span class="o">:</span> <span class="s2">&quot;use strict\nuse warnings\n\n&quot;</span><span class="p">,</span>
+<span class="err">\</span>      <span class="s1">&#39;w&#39;</span> <span class="o">:</span> <span class="s2">&quot;warn \&quot;${cursor}\&quot;;&quot;</span><span class="p">,</span>
+<span class="err">\</span>    <span class="p">},</span>
+<span class="err">\</span>  <span class="p">},</span>
+<span class="err">\</span>  <span class="s1">&#39;php&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>    <span class="s1">&#39;extends&#39;</span> <span class="o">:</span> <span class="s1">&#39;html&#39;</span><span class="p">,</span>
+<span class="err">\</span>    <span class="s1">&#39;filters&#39;</span> <span class="o">:</span> <span class="s1">&#39;html,c&#39;</span><span class="p">,</span>
+<span class="err">\</span>  <span class="p">},</span>
+<span class="err">\</span>  <span class="s1">&#39;css&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>    <span class="s1">&#39;filters&#39;</span> <span class="o">:</span> <span class="s1">&#39;fc&#39;</span><span class="p">,</span>
+<span class="err">\</span>  <span class="p">},</span>
+<span class="err">\</span>  <span class="s1">&#39;javascript&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>    <span class="s1">&#39;snippets&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>      <span class="s1">&#39;jq&#39;</span> <span class="o">:</span> <span class="s2">&quot;$(function() {\n\t${cursor}${child}\n});&quot;</span><span class="p">,</span>
+<span class="err">\</span>      <span class="s1">&#39;jq:each&#39;</span> <span class="o">:</span> <span class="s2">&quot;$.each(arr, function(index, item)\n\t${child}\n});&quot;</span><span class="p">,</span>
+<span class="err">\</span>      <span class="s1">&#39;fn&#39;</span> <span class="o">:</span> <span class="s2">&quot;(function() {\n\t${cursor}\n})();&quot;</span><span class="p">,</span>
+<span class="err">\</span>      <span class="s1">&#39;tm&#39;</span> <span class="o">:</span> <span class="s2">&quot;setTimeout(function() {\n\t${cursor}\n}, 100);&quot;</span><span class="p">,</span>
+<span class="err">\</span>    <span class="p">},</span>
+<span class="err">\</span>  <span class="p">},</span>
+<span class="err">\</span> <span class="s1">&#39;java&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>  <span class="s1">&#39;indentation&#39;</span> <span class="o">:</span> <span class="s1">&#39;    &#39;</span><span class="p">,</span>
+<span class="err">\</span>  <span class="s1">&#39;snippets&#39;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="err">\</span>   <span class="s1">&#39;main&#39;</span><span class="o">:</span> <span class="s2">&quot;public static void main(String</span><span class="cp">[]</span><span class="s2"> args) {\n\t|\n}&quot;</span><span class="p">,</span>
+<span class="err">\</span>   <span class="s1">&#39;println&#39;</span><span class="o">:</span> <span class="s2">&quot;System.out.println(\&quot;|\&quot;);&quot;</span><span class="p">,</span>
+<span class="err">\</span>   <span class="s1">&#39;class&#39;</span><span class="o">:</span> <span class="s2">&quot;public class | {\n}\n&quot;</span><span class="p">,</span>
+<span class="err">\</span>  <span class="p">},</span>
+<span class="err">\</span> <span class="p">},</span>
+<span class="err">\</span><span class="p">}</span>
+</pre></div>
+
+
+<p>修改默认触发快捷键：</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">user_emmet_expandabbr_key</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="n">C</span><span class="o">-</span><span class="n">Y</span><span class="o">&gt;</span><span class="p">,</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>如果完成tags要使用omnifunc方式，添加如下配置，关于omnifunc请通过<code>h omnifunc</code>查询帮助</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">use_emmet_complete_tag</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>让emmet只对html,css生效</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">user_emmet_install_global</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">autocmd</span> <span class="n">FileType</span> <span class="n">html</span><span class="p">,</span><span class="n">css</span> <span class="n">EmmetInstall</span>
+</pre></div>
+
+
+<p>修改emmet插件的使用模式范围,n代表普通模式，i代表插入模式，v代表可视模式</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">user_emmet_mode</span><span class="o">=</span><span class="sc">&#39;n&#39;</span>   <span class="s">&quot; 只保留普通模式下的功能</span>
+<span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">user_emmet_mode</span><span class="o">=</span><span class="err">&#39;</span><span class="n">iv</span><span class="err">&#39;</span>  <span class="s">&quot; 只保留插入模式和可视模式下的功能</span>
+<span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">user_emmet_mode</span><span class="o">=</span><span class="sc">&#39;a&#39;</span>   <span class="s">&quot; 支持所有模式</span>
+</pre></div>
+
+
+<p>自定义snippets<br />
+由于这个功能需要依赖插件作者的另一个插件web-api,而web-api插件需要依赖curl或者wget,这样使得跨平台使用显得非常繁琐，而这个自定义功能可通过之前介绍的xxx插件来完成。
+如果依然对此有兴趣，可查阅插件帮助，搜索<strong>Adding custom snippets</strong>,并参考</p>
+<blockquote>
+<p><a href="http://docs.emmet.io/customization/snippets/">http://docs.emmet.io/customization/snippets/</a></p>
+</blockquote>
+<h3>小结</h3>
+<p>emmet功能异常的强大，对于经常手写HTML代码的前端攻城狮来说简直是必备神器，对于emmet for vim 唯一遗憾的是，作者还没开发css扩展的部分，比起Sublime Text2版本的插件，稍有逊色。但是从github上状态看，该项目还在不断的开发中，建议使用者时不时的更新，或许会有意外的惊喜。</p>
+<p class="subheader">分类: <a href="./category/vim.html">vim</a>
+
+    标签: 
+    <a href="./tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="践行见远" data-title="我的vim插件--HTML编写利器Emmet" data-url="./wo-de-vimcha-jian-htmlbian-xie-li-qi-emmet.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"xuxiaofengme"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

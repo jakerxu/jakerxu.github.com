@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--DelimitMate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-delimitmate.html" rel="bookmark"
+        title="Permalink to 我的vim插件--DelimitMate">我的vim插件--DelimitMate</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-08-09T00:00:00">2014年08月09日
+</h6>
+
+
+    <h3>DelimitMate简介</h3>
+<p>包含括号、引号自动完成功能的插件曾经用过好几个，其中Auto-pairs功能非常强大，但是用了该插件后，输入逗号时会停顿，影响了编辑的流畅性，后来终于发现了DelimiMate这个强大的插件，它同样能完成括号引号的自动完成功能，针对不同的文件类型，语法分组，进行个性化配置，他和surround插件基本解决了括号引号的输入的效率问题。</p>
+<h3>DelimitMate安装</h3>
+<p>TODO</p>
+<h3>DelimitMate使用</h3>
+<blockquote>
+<p>本文中<strong>括号</strong>、<strong>引号</strong>就是指所有括号和引号的统称在，其中<strong>括号</strong>包含方括号、圆括号、花括号、尖括号等，<strong>引号</strong>包含单引号、双引号等，
+本文中括号都以圆括号为例，引号都以双引号为例,|代表光标所在位置</p>
+</blockquote>
+<ul>
+<li>基本功能<br />
+输入<code>(</code>自动会变成<code>(|)</code>，在括号中输入完内容后，可以直接输入<code>)</code>跳出括号，也可以用快捷键<code>Shift+TAB</code>完成此操作<br />
+如果嵌套了好几层括号或引号，可以通过<code>Ctrl+G</code>+<code>g</code>来跳出<br />
+在空括号中，用<code>Backspace</code>删除一对左右括号，用<code>Shift+Backspace</code>只删除右括号</li>
+<li>括号空格扩展<br />
+输入<code>(</code>和空格自动变为<code>( | )</code>，这个对采用这种编程风格的程序员来说非常有用</li>
+<li>括号回车扩展 <br />
+输入<code>(</code>和回车自动变为, 这个对c++，java，javascript的程序猿来说非常方便</li>
+</ul>
+<div class="highlight"><pre><span class="p">(</span>
+    <span class="o">|</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>空格扩展和回车扩展是默认关闭的</p>
+<ul>
+<li>智能引号和智能括号
+我们经常会在原有的代码上加上括号或者引号，如果delimitmate的自动完成功能，用户需要手动删除后括号和引号(当然你可以使用surrond插件避免这种情况)，非常不便。DelimiMate对此提供了解决方案：如果添加括号和引号时光标后有文本就只添加前括号或者前引号，如果后面没有文本，则仍然才用自动添加的方式。这两个特性默认情况下是打开的，可通过配置关闭。</li>
+<li>括号匹配平衡
+输入左括号时，会先检索同行未匹配右括号的个数，然后决定是否自动产生右括号，例如：</li>
+</ul>
+<div class="highlight"><pre><span class="n">fun</span><span class="o">|</span>  <span class="n">test</span><span class="p">))</span>   <span class="err">输`</span><span class="p">(((</span><span class="err">`结果</span>
+<span class="err">括号智能平衡未开启：</span><span class="n">fun</span><span class="p">((()))</span> <span class="n">test</span><span class="p">))</span>
+<span class="err">括号智能平衡开启：</span><span class="n">fun</span><span class="p">((()</span>  <span class="n">test</span><span class="p">))</span>
+</pre></div>
+
+
+<p>该功能默认关闭，并且匹配只在同一行中进行</p>
+<h3>DelimitMate配置</h3>
+<p>是否加载delimitmate插件，1是默认，0否，也可以通过<code>autocmd</code>命令来指定某个类型的文件是否加载</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">loaded_delimitMate</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">au</span> <span class="n">FileType</span> <span class="n">mail</span> <span class="n">let</span> <span class="n">b</span><span class="o">:</span><span class="n">loaded_delimitMate</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>如果把<code>delimitMate_offByDefault</code>设为1，则插件被加载，但是需要执行<code>:DelimitMateSwitch</code>功能才生效</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">delimitMate_offByDefault</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>设置括号类型和字符，默认为<code>&amp;matchpairs</code></p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">delimitMate_matchpairs</span> <span class="o">=</span> <span class="s">&quot;(:),[:],{:},&lt;:&gt;&quot;</span>
+<span class="n">au</span> <span class="n">FileType</span> <span class="n">vim</span><span class="p">,</span><span class="n">html</span> <span class="n">let</span> <span class="n">b</span><span class="o">:</span><span class="n">delimitMate_matchpairs</span> <span class="o">=</span> <span class="s">&quot;(:),[:],{:},&lt;:&gt;&quot;</span>
+</pre></div>
+
+
+<p>设置插件涵盖的引号种类</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">delimitMate_quotes</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> &#39; ` *&quot;</span>
+<span class="n">au</span> <span class="n">FileType</span> <span class="n">html</span> <span class="n">let</span> <span class="n">b</span><span class="o">:</span><span class="n">delimitMate_quotes</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> &#39;&quot;</span>
+</pre></div>
+
+
+<p>是否启用括号配对平衡,详见上一节说明</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">delimitMate_balance_matchpairs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">au</span> <span class="n">FileType</span> <span class="n">tcl</span> <span class="n">let</span> <span class="n">b</span><span class="o">:</span><span class="n">delimitMate_balance_matchpairs</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>设置支持嵌套的引号，主要是解决第三个引号输入后可能出现的问题，例如```是在markdown中是有含义的,如果不设置这个选项输入两个`时就会显示四个`</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">delimitMate_nesting_quotes</span> <span class="o">=</span> <span class="p">[</span><span class="sc">&#39;&quot;&#39;</span><span class="p">,</span><span class="sc">&#39;`&#39;</span><span class="p">]</span>
+<span class="n">au</span> <span class="n">FileType</span> <span class="n">python</span> <span class="n">let</span> <span class="n">b</span><span class="o">:</span><span class="n">delimitMate_nesting_quotes</span> <span class="o">=</span> <span class="p">[</span><span class="sc">&#39;&quot;&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>智能括号模式:设置一个正则表达式，如果输入括号右边的字符串满足正则表达式，则不自动输入后括号，默认<code>^\%(\w\|\!\|£\|\$\|_\|["'']\s*\S\)</code></p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">delimitMate_smart_matchpairs</span> <span class="o">=</span> <span class="err">&#39;&#39;</span>
+<span class="n">au</span> <span class="n">FileType</span> <span class="n">tcl</span> <span class="n">let</span> <span class="n">b</span><span class="o">:</span><span class="n">delimitMate_smart_matchpairs</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">^</span><span class="err">\</span><span class="o">%</span><span class="p">(</span><span class="err">\</span><span class="n">w</span><span class="err">\</span><span class="o">|</span><span class="err">\$\</span><span class="p">)</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>默认在注释（Comment）里，插件不生效，当然还可以对其他语法分组进行设置(这个参数生效的前提是，FileType的定义文件必须存在这些语法分组）</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">delimitMate_excluded_regions</span> <span class="o">=</span> <span class="s">&quot;Comment,String&quot;</span>
+</pre></div>
+
+
+<p>不加载delimitmate插件的文件类型</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">delimitMate_excluded_ft</span> <span class="o">=</span> <span class="s">&quot;mail,txt&quot;</span>
+</pre></div>
+
+
+<p>DelimitMate的键盘映射相对较为简单
+<code>&lt;Plug&gt;delimitMateBS</code> 默认映射<code>&lt;BS&gt;</code> 
+<code>&lt;Plug&gt;delimitMateS-BS</code> 默认映射<code>&lt;S-BS&gt;</code>
+<code>&lt;Plug&gt;delimitMateS-Tab</code>默认映射<code>&lt;S-Tab&gt;</code>
+<code>&lt;Plug&gt;delimitMateJumpMany</code>默认映射<code>&lt;C-G&gt;g</code>
+<code>&lt;Plug&gt;delimitMateCR</code>DelimitMate的回车
+<strong>括号回车</strong>会用到回车键，要将其他插件设置过的普通回车全部改成映射成Delimate的回车，这样<strong>括号回车</strong>才能正常工作，而我的neocomplete插件在选择自动补全候选项的时候用到了回车，因此需要修改。</p>
+<div class="highlight"><pre><span class="nx">imap</span> <span class="o">&lt;</span><span class="nx">expr</span><span class="o">&gt;&lt;</span><span class="nx">CR</span><span class="o">&gt;</span> <span class="nx">neosnippet</span><span class="vi">#expandable_or_jumpable</span><span class="p">()</span> <span class="o">?</span>
+    <span class="o">\</span> <span class="s2">&quot;\&lt;Plug&gt;(neosnippet_expand_or_jump)&quot;</span>
+    <span class="o">\</span><span class="p">:</span> <span class="nx">pumvisible</span><span class="p">()</span> <span class="o">?</span> <span class="nx">neocomplete</span><span class="vi">#close_popup</span><span class="p">():</span> <span class="s2">&quot;&lt;Plug&gt;delimitMateCR&quot;</span>
+</pre></div>
+
+
+<h3>小结</h3>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

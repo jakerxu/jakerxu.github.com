@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--插件安装利器Vundle/NeoBundle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-cha-jian-an-zhuang-li-qi-vundleneobundle.html" rel="bookmark"
+        title="Permalink to 我的vim插件--插件安装利器Vundle/NeoBundle">我的vim插件--插件安装利器Vundle/NeoBundle</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-07-28T00:00:00">2014年07月28日
+</h6>
+
+
+    <h3>传统的VIM插件安装方式</h3>
+<h3>Git时代的VIM插件安装</h3>
+<h4>安装Git</h4>
+<h4>安装Vundle</h4>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">http</span><span class="o">:</span><span class="c1">//github.com/gmarik/vundle.git ~/.vim/bundle/vundle</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="n">set</span> <span class="n">nocompatible</span>               <span class="s">&quot; be iMproved</span>
+<span class="n">filetype</span> <span class="n">off</span>                   <span class="s">&quot; required!</span>
+
+<span class="n">set</span> <span class="n">rtp</span><span class="o">+=~/</span><span class="p">.</span><span class="n">vim</span><span class="o">/</span><span class="n">bundle</span><span class="o">/</span><span class="n">vundle</span><span class="o">/</span>
+<span class="n">call</span> <span class="n">vundle</span><span class="err">#</span><span class="n">rc</span><span class="p">()</span>
+
+<span class="s">&quot; let Vundle manage Vundle</span>
+<span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">gmarik</span><span class="o">/</span><span class="n">vundle</span><span class="err">&#39;</span>
+
+<span class="s">&quot;需要安装的插件列表</span>
+<span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">tpope</span><span class="o">/</span><span class="n">vim</span><span class="o">-</span><span class="n">fugitive</span><span class="err">&#39;</span>
+<span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">Lokaltog</span><span class="o">/</span><span class="n">vim</span><span class="o">-</span><span class="n">easymotion</span><span class="err">&#39;</span>
+<span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">rstacruz</span><span class="o">/</span><span class="n">sparkup</span><span class="err">&#39;</span><span class="p">,</span> <span class="p">{</span><span class="err">&#39;</span><span class="n">rtp</span><span class="err">&#39;</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">vim</span><span class="o">/</span><span class="err">&#39;</span><span class="p">}</span>
+<span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">tpope</span><span class="o">/</span><span class="n">vim</span><span class="o">-</span><span class="n">rails</span><span class="p">.</span><span class="n">git</span><span class="err">&#39;</span>
+<span class="s">&quot; vim-scripts repos</span>
+<span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">L9</span><span class="err">&#39;</span>
+<span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">FuzzyFinder</span><span class="err">&#39;</span>
+<span class="s">&quot; non github repos</span>
+<span class="n">Bundle</span> <span class="err">&#39;</span><span class="n">git</span><span class="o">:</span><span class="c1">//git.wincent.com/command-t.git&#39;</span>
+<span class="s">&quot; ...</span>
+
+<span class="n">filetype</span> <span class="n">plugin</span> <span class="n">indent</span> <span class="n">on</span>     <span class="s">&quot; required!</span>
+</pre></div>
+
+
+<h3>Vundle使用</h3>
+<ul>
+<li><code>BundleList</code> 列出所有</li>
+<li><code>:BundleInstall [PluginName]</code> 安装</li>
+<li><code>:BundleClean</code> 卸载不在列表中的插件</li>
+<li><code>:BundleSearch [keyword]</code> 查找插件（在http://github.com/vimsciprt.org/XXXX下搜索）</li>
+<li><code>BundleUpdate</code> 更新插件，</li>
+</ul>
+<p>执行完成后可通过<code>l</code>查看日志,<code>q</code>退出Bundle窗口</p>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

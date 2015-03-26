@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--TaskList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-tasklist.html" rel="bookmark"
+        title="Permalink to 我的vim插件--TaskList">我的vim插件--TaskList</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-07-21T00:00:00">2014年07月21日
+</h6>
+
+
+    <h3>TaskList简介</h3>
+<p>在eclipse中对有一些特殊的注释关键字:
+1. <code>TODO</code>  表示尚未完成的待办事项。
+2. <code>XXX</code>   表示标识处代码虽然实现了功能，但是实现方案有待商榷，希望将来能改进。
+3. <code>FIXME</code> 表示标识处代码需要修正，甚至代码是错误的，不能工作，需要修复。
+在eclipse中对<code>TODO</code>、<code>FIXME</code>、<code>XXX</code>的特殊注释提供了task视图，在VIM中可以通过<strong>TaskList</strong>插件实现这个功能。</p>
+<h3>TaskList安装</h3>
+<h3>TaakList使用</h3>
+<ul>
+<li>用<code>：TaskList</code>触发TaskList窗口</li>
+<li>如果文本中没有<code>TODO</code>、<code>FIXME</code>、<code>XXX</code>等注释关键字，状态栏会提示<em>No task information found</em></li>
+<li>在窗口中使用<code>j</code>、<code>k</code>上下选择列表，主窗口中文本也会随之定位到所选的行</li>
+<li><code>q</code>或<code>Enter</code>退出窗口
+TODO插图</li>
+</ul>
+<h3>TaskList配置</h3>
+<div class="highlight"><pre><span class="s2">&quot; 定义td为快捷键,tl已经被Taglist用了:)</span>
+<span class="s2">map &lt;leader&gt;td &lt;Plug&gt;TaskList</span>
+<span class="s2">&quot;</span> <span class="err">打开</span><span class="nx">tasklist</span><span class="err">窗口的位置，默认</span><span class="mi">0</span><span class="err">上方，</span><span class="mi">1</span><span class="err">下方</span> 
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">tlWindowPosition</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="s2">&quot; 自定义注释关键字</span>
+<span class="s2">let g:tlTokenList = [&quot;</span><span class="nx">FIXME</span><span class="s2">&quot;, &quot;</span><span class="nx">TODO</span><span class="s2">&quot;, &quot;</span><span class="nx">XXX</span><span class="s2">&quot;]</span>
+<span class="s2">&quot;</span> <span class="err">是否记住上次关闭时</span><span class="nx">tasklist</span><span class="err">的光标位置</span><span class="p">,</span><span class="err">默认</span><span class="mi">0</span><span class="err">否</span><span class="p">,</span><span class="mi">1</span><span class="err">是</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">tlRememberPosition</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<h3>小结</h3>
+<p><strong>TaskList</strong>是一个小巧但是非常使用的插件，另外，TaskList插件只有一个文件300多行代码，非常适合对vimscript有一定了解但是想学写插件的朋友阅读。</p>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

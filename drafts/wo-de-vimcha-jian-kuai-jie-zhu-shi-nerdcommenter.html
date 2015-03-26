@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--快捷注释NerdCommenter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-kuai-jie-zhu-shi-nerdcommenter.html" rel="bookmark"
+        title="Permalink to 我的vim插件--快捷注释NerdCommenter">我的vim插件--快捷注释NerdCommenter</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-07-28T00:00:00">2014年07月28日
+</h6>
+
+
+    <h3>NERDCommenter简介</h3>
+<p>NERDCommenter是我用过最好用的注释插件，支持几乎所有的文件类型，如果没有什么特别的需求，安装上以后就可以直接使用了，不需要做任何配置。</p>
+<h3>NERDCommenter安装</h3>
+<h3>NERDCommenter使用</h3>
+<ul>
+<li><code>[n]&lt;leader&gt;cc</code> 注释当前行(普通模式)或者选中的字符(可视模式-块)</li>
+<li><code>[n]&lt;leader&gt;cn</code> 同<code>[n]&lt;leader&gt;cc</code>,但是如果已被注释，强制执行嵌套</li>
+<li><code>[n]&lt;leader&gt;c&lt;space&gt;</code> 注释/取消注释选择的行,注释还是取消注释取决于选择的第一行</li>
+<li><code>[n]&lt;leader&gt;cm</code> 用最少的注释符注释,如用<code>/**/</code>注释多行c语言，而不是每一行都用<code>/**/</code></li>
+<li><code>[n]&lt;leader&gt;ci</code> 反转注释状态，对每行分别执行，没注释的注释，已注释的取消</li>
+<li><code>[n]&lt;leader&gt;ca</code> 切换注释方式，如js可以在//和<code>/**/</code>两种方式间切换使用</li>
+<li><code>[n]&lt;leader&gt;cs</code> 用<strong>性感注释</strong>(sexy comment)对所选行进行注释</li>
+<li><code>[n]&lt;leader&gt;cu</code> 取消注释</li>
+<li><code>[n]&lt;leader&gt;cy</code> 同<code>[n]&lt;leader&gt;cc</code>，注释前先复制了当前行</li>
+<li><code>[n]&lt;leader&gt;cl</code> 注释并将注释符对齐（左侧注释符对齐）</li>
+<li><code>[n]&lt;leader&gt;cb</code> 注释并将注释符对齐(两端的注释符都对齐)</li>
+<li><code>&lt;leader&gt;c$</code> 对从光标到行末的字符进行注释</li>
+<li><code>&lt;leader&gt;cA</code> 在本行末增加注释</li>
+</ul>
+<blockquote>
+<p>所谓性感注释如下所示</p>
+</blockquote>
+<div class="highlight"><pre><span class="cm">/*</span>
+<span class="cm"> * this is sexy comment</span>
+<span class="cm"> * this is sexy comment</span>
+<span class="cm"> * this is sexy comment</span>
+<span class="cm"> */</span>
+</pre></div>
+
+
+<p>作者把注释的行为分得非常细,我个人用的比较多的是<code>&lt;leader&gt;c&lt;space&gt;</code>,<code>&lt;leader&gt;cA</code>,</p>
+<h3>NERDCommenter的配置</h3>
+<p>插件开关，默认1开，0关</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">loaded_nerd_comments</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>自定义键盘映射,一般很少会更改这些映射，除非和其他插件冲突,但是这些英文变量的名称有助于理解和记忆命令本身。<code>NERDCreateDefaultMappings</code>是否定义默认映射，默认为1</p>
+<div class="highlight"><pre><span class="k">let</span> <span class="n">NERDCreateDefaultMappings</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterComment</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nb">cc</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterNest</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nb">cn</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterToggle</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">c</span><span class="o">&lt;</span><span class="nx">space</span><span class="o">&gt;</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterMinimal</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">cm</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterInvert</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">ci</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterSexy</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">cs</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterYank</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">cy</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterToEOL</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">c</span><span class="err">$</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterAppend</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">cA</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterAltDelims</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">ca</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterAlignLeft</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">cl</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterAlignBoth</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">cb</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">plug</span><span class="o">&gt;</span><span class="nx">NERDCommenterUncomment</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">cu</span>
+</pre></div>
+
+
+<p>如果需要在插入模式下使用,需要配置键位映射, TODO注:配置后一直没有生效</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">NERDComInsertMap</span><span class="o">=</span><span class="err">&#39;</span><span class="o">&lt;</span><span class="n">c</span><span class="o">-</span><span class="n">c</span><span class="o">&gt;</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>是否嵌套注释，默认1是，如果设成0，则用<code>&lt;leader&gt;cc</code>时如果已注释就不再添加注释符</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">NERDDefaultNesting</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>NERDDefaultNesting
+性感注释的样式:默认是0,可选值：0，1</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">NERDCompactSexyComs</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="cm">/* 这是样式1</span>
+<span class="cm"> * 这是样式1</span>
+<span class="cm"> * 这是样式1*/</span>
+<span class="cm">/*</span>
+<span class="cm"> * 这是样式0</span>
+<span class="cm"> * 这是样式0</span>
+<span class="cm"> * 这是样式0</span>
+<span class="cm"> */</span>
+</pre></div>
+
+
+<p>还有几个配置参数如<code>NERDAllowAnyVisualDelims</code>、<code>NERDBlockComIgnoreEmpty</code>、<code>NERDCommentWholeLinesInVMode</code>规定了注释在可视模式(包括可视模式、可视块模式、可视行模式)下的行为细节，极少会用到，一般使用默认即可，如果想了解这些参数及另外的可配置项,可通过<code>h NERDCommenter</code>查看帮助文档。</p>
+<h3>存在的问题</h3>
+<p>只能根据文件类型提供注释，在html中的css或者javasciprt就无法识别了。</p>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--自动补全neocomplcache</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-zi-dong-bu-quan-neocomplcache.html" rel="bookmark"
+        title="Permalink to 我的vim插件--自动补全neocomplcache">我的vim插件--自动补全neocomplcache</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-07-30T00:00:00">2014年07月30日
+</h6>
+
+
+    <h3>neocomplcache简介</h3>
+<p>vim的自动补全一直是令人诟病，插件很多但是好用的却寥寥无几，YouCompleteMe在这类插件中算是翘楚，但是其主要的提升在于<strong>类c语言</strong>(c,c++,objc)，而且该插件需要先编译后使用，我近来很少用C/C++，因此对此插件也不是很感冒。我主要还是使用neocomplcache插件进行补全操作。
+这个插件会在Vim打开文件的时候对上下文作一个索引，并把索引结果保存到缓存中。同时，文件更改的内容会在保存的时候被索引。TODO提供补全的种类，使用缓存并建立索引势必会使用更多的内存，插件作者毫不讳言该插件比一般的插件会占用更多的内存。
+neocomplcache已经有升级版本neocomplete，但是需要vim增加对lue支持，而增加lue的支持需要重新编译vim，虽然作者已经不再更新neocomplcache版本，但是目前看来neocomplete对neocomplcache改进依然有限，许多用户还是坚守在neocomplcache。</p>
+<h3>neosnippet简介</h3>
+<p>我在使用neocomplcache之前，对代码片段的补全一直使用<strong>SnipMate</strong>插件,由于neocomplcache和SnipMate在Tab键上产生冲突（当然SuperTab也会有同样的困扰）neocomplcache作者就开发了neosnippet插件，可以完全兼容以前的snippet，通过配置可以完美解决补全触发的问题。</p>
+<h3>neocomplcache安装</h3>
+<ul>
+<li>ctags</li>
+</ul>
+<h3>neocomplcache配置</h3>
+<div class="highlight"><pre><span class="s2">&quot; 自定义开关</span>
+<span class="s2">map &lt;leader&gt;neo :call ToggleNeoCompl()&lt;CR&gt;</span>
+<span class="s2">function! ToggleNeoCompl()</span>
+<span class="s2">    if g:neocomplcache_disable_auto_complete == 0</span>
+<span class="s2">        let g:neocomplcache_disable_auto_complete = 1</span>
+<span class="s2">    else</span>
+<span class="s2">        let g:neocomplcache_disable_auto_complete = 0</span>
+<span class="s2">    endif</span>
+<span class="s2">endfunction</span>
+<span class="s2">&quot;</span> <span class="err">关闭不兼容的插件</span><span class="nx">AutoComplPop.</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">acp_enableAtStartup</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="s2">&quot; 启用 neocomplcache.</span>
+<span class="s2">let g:neocomplcache_enable_at_startup = 1</span>
+<span class="s2">&quot;</span> <span class="err">控制弹出菜单关键字的宽度大于设定值不显示，默认</span><span class="mi">50</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcace_max_keyword_width</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="s2">&quot; 控制输入多少字符时弹出自动补全菜单,默认2</span>
+<span class="s2">let g:neocomplcache_auto_completion_start_length = 2</span>
+<span class="s2">&quot;</span> <span class="err">查找补全时是否忽略大小写</span> <span class="mi">0</span><span class="err">不忽略，</span><span class="mi">1</span><span class="err">忽略</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcache_enable_ignore_case</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="s2">&quot;当输入含有大写字母时, 将区分大小写</span>
+<span class="s2">let g:neocomplcache_enable_smart_case = 1</span>
+<span class="s2">&quot;</span> <span class="err">显示候选项目时，是否自动选择第一个候选项目，默认</span><span class="mi">0</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcache_enable_auto_select</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="s2">&quot; 自动补全菜单显示的时间，单位毫秒，默认300</span>
+<span class="s2">let g:neocomplcache_cursor_hold_i_time = 1000</span>
+<span class="s2">&quot;</span> <span class="err">这个变量控制是否在选择模式下禁用展开代码段</span><span class="p">(</span><span class="nx">snippets</span><span class="p">)</span><span class="err">的组合键。</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcache_disable_select_mode_mappings</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="s2">&quot; ctags的路径</span>
+<span class="s2">let g:neocomplcache_ctags_program=&#39;ctags&#39;</span>
+<span class="s2">&quot;</span> <span class="nb">Set</span> <span class="nx">minimum</span> <span class="nx">syntax</span> <span class="nb">keyword</span> <span class="nx">length.</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcache_min_syntax_length</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcache_lock_buffer_name_pattern</span> <span class="o">=</span> <span class="s1">&#39;\*ku\*&#39;</span>
+<span class="s2">&quot; 启用驼峰模式缩写匹配，输入AE时会匹配ArgumentsException</span>
+<span class="s2">&quot;</span><span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcache_enable_camel_case_completion</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="s2">&quot; 启用下划线模式缩写匹配，输入ae会匹配arguments_exception</span>
+<span class="s2">&quot;</span><span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcache_enable_underbar_completion</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="s2">&quot; 自定义字典，对自定义库补全很有用</span>
+<span class="s2">let g:neocomplcache_dictionary_filetype_lists = {</span>
+<span class="s2">    \ &#39;default&#39; : &#39;&#39;,</span>
+<span class="s2">    \ &#39;python&#39; : $VIM.&#39;/vimfiles/bundle/vim_xxfconfig/dict/qt.dic&#39;,</span>
+<span class="s2">    \ }</span>
+<span class="s2">&quot;</span> <span class="err">自定义补全模式</span> 
+<span class="k">if</span> <span class="o">!</span><span class="nb">exists</span><span class="p">(</span><span class="s1">&#39;g:neocomplcache_keyword_patterns&#39;</span><span class="p">)</span>
+    <span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">neocomplcache_keyword_patterns</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nx">endif</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="nx">neocomplcache_keyword_patterns</span><span class="err">[</span><span class="s1">&#39;default&#39;</span><span class="cp">]</span> = &#39;\h\w*&#39;
+&quot; Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+&quot; Enable heavy omni completion.
+if !exists(&#39;g:neocomplcache_omni_patterns&#39;)
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.php = &#39;<span class="cp">[</span><span class="p">^</span><span class="nx">.</span> <span class="o">\</span><span class="nb">t</span><span class="cp">]</span>-&gt;\h\w*\|\h\w*::&#39;
+let g:neocomplcache_omni_patterns.c = &#39;<span class="cp">[</span><span class="p">^</span><span class="nx">.</span><span class="err">[</span><span class="p">:</span><span class="nb">digit</span><span class="p">:</span><span class="cp">]</span> *\t]\%(\.\|-&gt;\)&#39;
+let g:neocomplcache_omni_patterns.cpp = &#39;<span class="cp">[</span><span class="p">^</span><span class="nx">.</span><span class="err">[</span><span class="p">:</span><span class="nb">digit</span><span class="p">:</span><span class="cp">]</span> *\t]\%(\.\|-&gt;\)\|\h\w*::&#39;
+</pre></div>
+
+
+<p>neocomplcache为了适应各种语言在各种场景下的补全操作，并且尽量保持与其他软件的兼容，使得neocomplcache的配置非常异常灵活，我所列的配置只是一部分基本配置，如果想达到真正灵活灵活使用neocomplcache，还需要进一步阅读文档，neocomplcache的帮助文档已经被网友翻译成了中文，基于插件本身的复杂性，很多配置理解起来还是比较费尽的。<code>h neocomplcache</code></p>
+<h3>neosnippet的配置</h3>
+<p>我采用的neocomlcache和neosnippet配合的方式，neosnippet提示和其他补全提示自动弹出，通过<code>Tab</code>键选择要补全的内容，最终通过<code>Enter</code>键确定选择。当然有些人不喜欢补全自动弹出，有些人喜欢用空格键来选择或者确认补全的选项，可以根据需要重新定义。</p>
+<div class="highlight"><pre><span class="s2">&quot; 手动调用neosnippet快捷键</span>
+<span class="s2">&quot;</span> <span class="err">快捷键策略</span><span class="p">:</span><span class="nx">snippets</span><span class="err">和普通补全相同，选择通过</span><span class="nx">tab</span><span class="err">键</span>
+<span class="nx">imap</span> <span class="o">&lt;</span><span class="nx">expr</span><span class="o">&gt;&lt;</span><span class="nx">CR</span><span class="o">&gt;</span> <span class="nx">neosnippet</span><span class="vi">#expandable_or_jumpable</span><span class="p">()</span> <span class="o">?</span>
+    <span class="o">\</span> <span class="s2">&quot;\&lt;Plug&gt;(neosnippet_expand_or_jump)&quot;</span>
+    <span class="o">\</span><span class="p">:</span> <span class="nx">pumvisible</span><span class="p">()</span> <span class="o">?</span> <span class="nx">neocomplcache</span><span class="vi">#close_popup</span><span class="p">():</span> <span class="s2">&quot;\&lt;CR&gt;&quot;</span>
+<span class="nx">smap</span> <span class="o">&lt;</span><span class="nx">expr</span><span class="o">&gt;&lt;</span><span class="nx">CR</span><span class="o">&gt;</span> <span class="nx">neosnippet</span><span class="vi">#expandable_or_jumpable</span><span class="p">()</span> <span class="o">?</span>
+    <span class="o">\</span> <span class="s2">&quot;\&lt;Plug&gt;(neosnippet_expand_or_jump)&quot;</span>
+    <span class="o">\</span><span class="p">:</span> <span class="nx">pumvisible</span><span class="p">()</span> <span class="o">?</span> <span class="nx">neocomplcache</span><span class="vi">#close_popup</span><span class="p">():</span> <span class="s2">&quot;\&lt;CR&gt;&quot;</span>
+<span class="nx">imap</span> <span class="o">&lt;</span><span class="nx">expr</span><span class="o">&gt;&lt;</span><span class="nx">Space</span><span class="o">&gt;</span> <span class="s2">&quot;\&lt;Space&gt;&quot;</span>
+<span class="nx">imap</span> <span class="o">&lt;</span><span class="nx">expr</span><span class="o">&gt;&lt;</span><span class="nx">TAB</span><span class="o">&gt;</span>  <span class="nx">pumvisible</span><span class="p">()</span> <span class="o">?</span> <span class="s2">&quot;\&lt;C-n&gt;&quot;</span> <span class="p">:</span> <span class="s2">&quot;\&lt;TAB&gt;&quot;</span>
+<span class="nx">smap</span> <span class="o">&lt;</span><span class="nx">expr</span><span class="o">&gt;&lt;</span><span class="nx">TAB</span><span class="o">&gt;</span>  <span class="nx">pumvisible</span><span class="p">()</span> <span class="o">?</span> <span class="s2">&quot;\&lt;C-n&gt;&quot;</span> <span class="p">:</span> <span class="s2">&quot;\&lt;TAB&gt;&quot;</span>
+<span class="s2">&quot; For snippet_complete marker.</span>
+<span class="s2">if has(&#39;conceal&#39;)</span>
+<span class="s2">    set conceallevel=2 concealcursor=i</span>
+<span class="s2">endif</span>
+<span class="s2">&quot;</span> <span class="err">兼容</span><span class="nx">snipmate</span><span class="err">插件的模版</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="nx">neosnippet</span><span class="vi">#enable_snipmate_compatibility</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="s2">&quot; snippets文件的路径，可用逗号间隔</span>
+<span class="s2">let g:neosnippet#snippets_directory=$VIM.&#39;/vimfiles/bundle/vim_xxfconfig/snippets/&#39;</span>
+</pre></div>
+
+
+<h3>snippet文件的格式</h3>
+<p>TODO</p>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

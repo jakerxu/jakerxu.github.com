@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--surround</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-surround.html" rel="bookmark"
+        title="Permalink to 我的vim插件--surround">我的vim插件--surround</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-07-28T00:00:00">2014年07月28日
+</h6>
+
+
+    <h3>安装</h3>
+<p>vim7+
+TODO</p>
+<h3>使用</h3>
+<ul>
+<li><code>ds</code>命令删除</li>
+</ul>
+<div class="highlight"><pre><span class="s2">&quot;Hello *world!&quot;</span> <span class="o">--&gt;</span> <span class="nx">ds</span><span class="s2">&quot; --&gt; Hello *world!</span>
+<span class="s2">(123+4*56)/2 --&gt; ds) --&gt; (123+4*56)/2</span>
+<span class="s2">&lt;div&gt;Hello&lt;/div&gt; --&gt;dst --&gt; Hello</span>
+</pre></div>
+
+
+<ul>
+<li><code>cs</code>命令</li>
+</ul>
+<div class="highlight"><pre><span class="s2">&quot;Hello world!&quot;</span> <span class="o">--&gt;</span> <span class="nx">cs</span><span class="s2">&quot;&#39; --&gt; &#39;Hello world!&#39;</span>
+<span class="s2">&quot;</span><span class="nx">Hello</span> <span class="nx">world</span><span class="o">!</span><span class="s2">&quot; --&gt; cs&quot;</span><span class="o">&lt;</span><span class="nx">q</span><span class="o">&gt;</span> <span class="o">--&gt;</span> <span class="o">&lt;</span><span class="nx">q</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">world</span><span class="o">!&lt;/</span><span class="nx">q</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="mi">123</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="mi">56</span><span class="p">)/</span><span class="nx">2</span> <span class="o">--&gt;</span> <span class="nx">cs</span><span class="p">)</span><span class="cp">]</span> --&gt; <span class="cp">[</span><span class="mi">123</span><span class="o">+</span><span class="mi">456</span><span class="cp">]</span>/2
+(123+4*56)/2 --&gt; cs)<span class="cp">[</span> <span class="o">--&gt;</span> <span class="err">[</span> <span class="mi">123</span><span class="o">+</span><span class="mi">456</span> <span class="cp">]</span>/2
+<span class="nt">&lt;div&gt;</span>Yo!*<span class="nt">&lt;/div&gt;</span> --&gt; cst<span class="nt">&lt;p&gt;</span> --&gt; <span class="nt">&lt;p&gt;</span>Yo!<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+
+<ul>
+<li><code>ys</code>命令</li>
+</ul>
+<div class="highlight"><pre><span class="n">Hello</span> <span class="n">world</span><span class="o">!</span> <span class="o">--&gt;</span> <span class="n">ysiw</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">Hello</span> <span class="p">(</span><span class="n">world</span><span class="p">)</span><span class="o">!</span>
+
+<span class="n">test</span> <span class="o">--&gt;</span> <span class="n">ysiWfun</span> <span class="o">--&gt;</span> <span class="n">fun</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+<span class="n">test1</span>
+<span class="n">test2</span>
+
+<span class="o">--&gt;</span> <span class="n">ysisb</span>
+
+<span class="p">(</span>
+<span class="n">test1</span>
+<span class="n">test2</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li><code>yss</code>命令对整行</li>
+</ul>
+<div class="highlight"><pre><span class="n">Hello</span> <span class="n">world</span><span class="o">!</span> 
+<span class="o">--&gt;</span> <span class="n">yssB</span> <span class="o">--&gt;</span> 
+<span class="p">{</span><span class="n">Hello</span> <span class="n">world</span><span class="o">!</span><span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li><code>vS</code>命令
+<code>hello world</code> 光标再w处执行<code>vllllS)</code>得到结果<code>helllo (world)</code>
+TODO:可是模式其他的命令</li>
+</ul>
+<h3>Repeat插件简介</h3>
+<p>vim自带的<code>.</code>命令可以重复操作上一个命令，但是有时候我们需要重复执行的命令，对于vim本身来说是个各种单一指令的组合，例如surround插件的这些复杂操作，当然我们可以利用<strong>宏命令</strong>来完成这个需求，这里介绍一种更为简单的办法，那就是应用Repeat插件。
+5个插件默认提供了对Repeat插件，分别是surround，speeddating，abolish，unimpaired，commentary。
+例如：</p>
+<div class="highlight"><pre><span class="n">test1</span>
+<span class="n">test2</span>
+</pre></div>
+
+
+<p>给test1增加括号<code>ysiw)</code>,要给test2也加上括号，只要移动到test2上，执行<code>.</code>命令即可。</p>
+<p>希望以后能有更多插件对<code>Repeat</code>插件提供支持，只要在映射函数最后添加如下语句:</p>
+<div class="highlight"><pre><span class="nx">silent</span><span class="o">!</span> <span class="nb">call</span> <span class="nb">repeat</span><span class="vi">#set</span><span class="p">(</span><span class="s2">&quot;\&lt;Plug&gt;MyWonderfulMap&quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">:</span><span class="nb">count</span><span class="p">)</span>
+</pre></div>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

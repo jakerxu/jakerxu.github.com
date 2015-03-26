@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--colorv</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-colorv.html" rel="bookmark"
+        title="Permalink to 我的vim插件--colorv">我的vim插件--colorv</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-08-07T00:00:00">2014年08月07日
+</h6>
+
+
+    <h3>ColorV简介</h3>
+<h3>ColorV安装</h3>
+<h3>ColorV使用</h3>
+<p>查看颜色
+- <code>:ColorV</code> (<code>&lt;leader&gt;cv</code>)
+复制：<code>cc</code>
+- <code>:ColorVView</code> (<code>&lt;leader&gt;cw</code>) 在ColorV窗口中查看光标下的颜色
+- <code>:ColorVPreview</code>(<code>&lt;leader&gt;cpp</code>) 在窗口中直接预览所有文本中的颜色(背景色变为改颜色)
+编辑颜色
+- <code>:ColorVEdit</code>(<code>&lt;leader&gt;ce</code>)
+- <code>:ColorVEditAll</code>(<code>&lt;leader&gt;cE</code>)
+- <code>:ColorVInsert</code>(<code>&lt;leader&gt;cii</code>)
+设计颜色
+- <code>:ColorVName</code>(<code>&lt;leader&gt;cn</code>) 显示W3C标准颜色的名称和十六进制颜色对照表(NERD-Comment插件的快捷键有冲突)
+- <code>:ColorVList Hue</code>(<code>&lt;leader&gt;cgh</code>)
+- <code>:ColorVTurn2 {hex1} {hex2}</code>(<code>&lt;leader&gt;cgg</code>)
+- <code>:ColorVPicker</code>(<code>&lt;leader&gt;cd</code>) 跳出一个GUI的颜色选择器，需要gtk支持！
+设计色彩模式
+- <code>:ColorVScheme</code>(<code>&lt;leader&gt;css</code>)
+- <code>:ColorVSchemeFav</code>(<code>&lt;leader&gt;csf</code>)
+- <code>:ColorVSchemeNew</code>(<code>&lt;leader&gt;csn</code>)</p>
+<h3>ColorV配置</h3>
+<h1>CC5C7D</h1>
+<h1>ffffff</h1>
+<h1>ffffff</h1>
+<h1>CCB800</h1>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

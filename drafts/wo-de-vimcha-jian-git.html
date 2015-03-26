@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--Git</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-git.html" rel="bookmark"
+        title="Permalink to 我的vim插件--Git">我的vim插件--Git</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-08-03T00:00:00">2014年08月03日
+</h6>
+
+
+    <h3>git</h3>
+<p>介绍4个插件完成git&amp;github的操作：</p>
+<ul>
+<li>fugitive</li>
+<li>gitgutter</li>
+<li>gitv</li>
+<li>vim-github-dashboard</li>
+</ul>
+<h3>安装</h3>
+<h4></h4>
+<h3>fugitive</h3>
+<ul>
+<li><code>Git</code> 相当于执行了<code>!git</code></li>
+<li><code>Gstatus</code> 相当于执行了 <code>git status</code>，将光标放到文件上<ul>
+<li><code>dv</code>  <code>:Gvidff</code>  我最常用的比较 </li>
+<li><code>ds</code>  <code>:Gsdiff</code></li>
+<li>
+<h2>-</h2>
+-</li>
+</ul>
+</li>
+<li><code>Gcommit</code> <ul>
+<li>如果暂存区里有数据，则输入提交说明，然后<code>:wq</code>或者<code>:Gwrite</code>后提交完成</li>
+<li>如果没有可以提交的内容，会执行<code>Gstatus</code></li>
+</ul>
+</li>
+<li><code>Gpull</code></li>
+<li><code>Gpush</code></li>
+<li><code>Ggrep</code></li>
+<li><code>Glog</code></li>
+<li><code>Gedit</code></li>
+<li><code>Gsplit</code></li>
+<li><code>Gvsplit</code></li>
+<li><code>Gread</code></li>
+<li><code>Gwrite</code></li>
+<li><code>Gdiff</code></li>
+<li><code>Gsdiff</code></li>
+<li><code>Gvdiff</code></li>
+<li><code>Gmove</code></li>
+<li><code>Gremove</code></li>
+<li><code>Gblame</code></li>
+<li><code>Gbrowse</code></li>
+</ul>
+<h3>gitv简介</h3>
+<p>gitv可以查看所有的提交历史，非常好用</p>
+<h3>gitgutter</h3>
+<h3>gitgutter安装</h3>
+<p>VIM需要支持signs特性，通过<code>:echo has('signs')</code>结果是否为1来判断</p>
+<h3>vim-github-dashboard</h3>
+<p>查看Github的事件</p>
+<h3>安装vim-github-dashboard</h3>
+<p>Ruby 1.8.7+</p>
+<h3>vim-github-dashbord使用</h3>
+<h3>vim-github-dashbord配置</h3>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--无处遁形的文件ctrlp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="./theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="./theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="./theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="./theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="./theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("./theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("./theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="./theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href=".">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="./category/vim.html">vim</a></li>
+                    <li><a href="./category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="./archives.html">归档</a>
+            </li>
+            <li>
+                <a href="./tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="./feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="./wo-de-vimcha-jian-wu-chu-dun-xing-de-wen-jian-ctrlp.html" rel="bookmark"
+        title="Permalink to 我的vim插件--无处遁形的文件ctrlp">我的vim插件--无处遁形的文件ctrlp</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-07-29T00:00:00">2014年07月29日
+</h6>
+
+
+    <h3>ctrlp简介</h3>
+<p>可以对文件、缓冲区，最近最多使用，标签进行检索，支持vim的正则表达式
+ctrlp是一个看似简单，但是功能十分强大的插件，配合NERDTree使用基本上可以满足绝大部分查找、打开文件的情况</p>
+<h3>ctrlp安装</h3>
+<h3>ctrlp使用</h3>
+<p>ctrlp可以搜索三类文件：  </p>
+<ol>
+<li><code>:CtrlP</code> 普通的文件</li>
+<li><code>:CtrlPBuffer</code> 已经打开的buffer</li>
+<li><code>:CtrlPPMRU</code> 最近打开的文件(mru files)</li>
+</ol>
+<ul>
+<li><code>Ctrl+P</code> 调出插件</li>
+<li><code>Ctrl+F</code>、<code>Ctrl+B</code>在各个模式中切换直接输入要搜索的内容</li>
+<li>
+<p><code>Ctrl+J</code>、<code>Ctrl+K</code>在结果文件中上下选择</p>
+</li>
+<li>
+<p><code>Ctrl+O</code> 打开文件，提示打开文件的方式：
+        t - 在新标签页中打开。
+        v - 在一个竖直分割窗口中。
+        h - 在一个水平分割窗口中。
+        r - 在当前窗口中打开。
+        i - 在隐藏的缓冲区中。</p>
+</li>
+<li><code>Ctrl+ T</code> 直接在新的标签页中打开</li>
+<li><code>Ctrl+ V</code>，在新的分割窗口中打开（纵向分割）</li>
+<li><code>Ctrl+ X</code>，<code>Ctrl+Enter</code>，<code>Ctrl+S</code> 在新的分割窗口中打开（横向分割）</li>
+<li>
+<p><code>Ctrl+ N</code>、<code>Ctrl+P</code> 切换之前搜索过的模式及结果</p>
+</li>
+<li>
+<p><code>Ctrl+D</code> 可以切换“全路径搜索”和“按文件名搜索”</p>
+</li>
+<li><code>Ctrl+R</code> 可以切换为正则表达式搜索</li>
+<li><code>Ctrl+Z</code> 可以标记(取消标记)多个文件，然后用<code>Ctrl+O</code>打开</li>
+<li><code>Ctrl+U</code> 清除输入</li>
+<li><code>Esc</code>，<code>Ctrl+C</code> 退出CtrlP。</li>
+</ul>
+<h3>ctrlp配置</h3>
+<p>设定ctrlp的绑定按键和打开的命令，既然ctrlp叫ctrlp一般不会更改:)</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">ctrlp_map</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="n">c</span><span class="o">-</span><span class="n">p</span><span class="o">&gt;</span><span class="err">&#39;</span>
+<span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">ctrlp_cmd</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">CtrlP</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>插件开关,默认1启用，0禁用</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">loaded_ctrlp</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>默认0按全路径搜索，1按文件名搜索，在提示面板上可以通过<code>Ctrl+D</code>来切换</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">ctrlp_by_filename</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>是否使用正则表达式匹配，在提示面板上可以通过<code>Ctrl+R</code>来切换</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">ctrlp_regexp</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>ctrlp_match_window来设置ctrlp窗口的位置和显示条数
+- 位置: (默认:底部)
+    - top - 在屏幕顶部显示匹配窗口。
+    - bottom - 在屏幕底部显示匹配窗口。
+- 结果的排列顺序: (默认: btt)
+    - order:ttb - 从顶部到底部。
+    - order:btt - 从底部到顶部。
+- 最小和最大高度:
+    - min:{n} - 最少显示 {n} 行 (默认: 1)。
+    -  max:{n} - 最多显示 {n} 行 (默认: 10)。
+- 结果集的最大数目：
+    - results:{n} - 列出最多 {n} 条结果 (默认: 和最大高度同步)。</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">ctrlp_match_window</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">bottom</span><span class="p">,</span><span class="n">order</span><span class="o">:</span><span class="n">btt</span><span class="p">,</span><span class="n">min</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="n">max</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span><span class="n">results</span><span class="o">:</span><span class="mi">10</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>TODO:ctrlp_working_path_mode</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">ctrlp_working_path_mode</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">ra</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>详细的设置可以再ctrlp窗口提交<code>?</code>或者执行<code>:h ctrlp</code>查阅帮助文档，该插件的文档已经被翻译成中文，感谢译者。</p>
+<p class="subheader">分类: <a href="./category/vim.html">vim</a>
+
+    标签: 
+    <a href="./tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="践行见远" data-title="我的vim插件--无处遁形的文件ctrlp" data-url="./wo-de-vimcha-jian-wu-chu-dun-xing-de-wen-jian-ctrlp.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"xuxiaofengme"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

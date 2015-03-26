@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--窗口缩放winresizer&ZoomWinTab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-chuang-kou-suo-fang-winresizerzoomwintab.html" rel="bookmark"
+        title="Permalink to 我的vim插件--窗口缩放winresizer&ZoomWinTab">我的vim插件--窗口缩放winresizer&ZoomWinTab</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-08-03T00:00:00">2014年08月03日
+</h6>
+
+
+    <h3>winresize简介</h3>
+<p>我们用vim进行coding的时候，会同时打开好多个窗口，就会有调整窗口大小的需要，首先我们看一下如何通过vim原生的快捷键改变窗口大小。</p>
+<p>关于分割窗口的操作，横向分割的窗口:
+- <code>CTRL+W</code> + <code>+</code> 窗口边界上移
+- <code>CTRL+W</code> + <code>-</code> 窗口边界下移
+- <code>CTRL+W</code> + <code>_</code> 将当前窗口调到最大
+- <code>CTRL+W</code> + <code>=</code> 平分窗口
+纵向分割的窗口:
+- <code>CTRL+W</code> + <code>&lt;</code> 窗口边界左移
+- <code>CTRL+W</code> + <code>&gt;</code> 窗口边界右移
+- <code>CTRL+W</code> + <code>|</code> 将当前窗口调到最大
+- <code>CTRL+W</code> + <code>=</code> 平分窗口，这个快捷键是通用的。</p>
+<p>会发现操作起来非常不方便，因此我们需要引入winresize这个插件，看这个名字就知道，这个插件只做一件事--改变窗口的大小。</p>
+<h3>winresize安装</h3>
+<h3>winresize使用</h3>
+<ul>
+<li><code>:WinResizerStartResize</code>
+    进入窗口缩放模式，可以通过<code>g:winresizer_start_key</code>定义快捷键,默认是<code>Enter+e</code>，我定义的是<code>&lt;leader&gt;wr</code></li>
+<li><code>j</code>、<code>k</code>、<code>h</code>、<code>l</code>调整当前窗口状态</li>
+<li><code>q</code>,中途取消,恢复原有窗口大小</li>
+<li>调整完成后按<code>ESC</code>完成并退出窗口缩放模式</li>
+</ul>
+<h3>winresize配置</h3>
+<div class="highlight"><pre><span class="s2">&quot;进入缩放模式的快捷键</span>
+<span class="s2">let g:winresizer_start_key=&#39;&lt;leader&gt;wr&#39;</span>
+<span class="s2">&quot;</span> <span class="nx">esc</span><span class="err">完成并推出缩放模式</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">winresizer_finish_with_escape</span><span class="o">=</span><span class="mi">1</span>
+<span class="s2">&quot; 完成缩放并退出的键值，默认13(&lt;Enter&gt;)</span>
+<span class="s2">let g:winresizer_keycode_finish=13</span>
+<span class="s2">&quot;</span> <span class="err">取消并且退出窗口缩放模式的快捷键</span><span class="p">,</span><span class="err">默认</span><span class="mi">113</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">winresizer_keycode_cancel</span><span class="o">=</span><span class="mi">113</span>
+
+<span class="s2">&quot; 横向移动的距离,默认10和3</span>
+<span class="s2">let g:winresizer_vert_resize=2</span>
+<span class="s2">let g:winresizer_horiz_resize=2</span>
+
+<span class="s2">&quot;</span> <span class="err">缩放方向的快捷键键值，默认对应</span><span class="nx">h</span><span class="p">,</span><span class="nx">l</span><span class="p">,</span><span class="nx">j</span><span class="p">,</span><span class="nx">k</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">winresizer_keycode_left</span><span class="o">=</span><span class="mi">104</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">winresizer_keycode_right</span><span class="o">=</span><span class="mi">108</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">winresizer_keycode_down</span><span class="o">=</span><span class="mi">106</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">winresizer_keycode_up</span><span class="o">=</span><span class="mi">107</span>
+</pre></div>
+
+
+<h3>ZoomWinTab</h3>
+<p>在这顺便介绍一个插件zoomwintab，在多窗口编辑时，可以对当前编辑窗口进行最大化操作(单窗口)，编辑完成后切换回多窗口状态，非常实用的一个功能。
+插件非常简单，安装方法不再赘述述, 快捷键配置<code>map &lt;Leader&gt;z :ZoomWinTabToggle&lt;CR&gt;</code></p>
+<blockquote>
+<p>github地址：https://github.com/vim-scripts/zoomwintab.vim</p>
+</blockquote>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

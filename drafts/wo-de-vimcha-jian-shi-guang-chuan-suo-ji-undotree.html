@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--时光穿梭机Undotree</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-shi-guang-chuan-suo-ji-undotree.html" rel="bookmark"
+        title="Permalink to 我的vim插件--时光穿梭机Undotree">我的vim插件--时光穿梭机Undotree</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-07-24T00:00:00">2014年07月24日
+</h6>
+
+
+    <h3>VIM中的撤销操作</h3>
+<h4>基本操作</h4>
+<ul>
+<li><code>u</code>,<code>:u</code> 撤销命令，<code>:redo</code>,<code>Ctrl+R</code> 为取消撤销（重做）</li>
+<li><code>U</code> 撤销对于当前行的操作,但是想取消<code>U</code>操作是用<code>u</code>而不是<code>Ctrl+R</code>，也就是<code>U</code>操作并不是多次<code>u</code>操作的组合</li>
+</ul>
+<h4>持久撤销机制</h4>
+<ul>
+<li>VIM7.3引入了持久撤销机制（Persistent undo)，即在文件保存关闭后，还能撤销之前的操作
+undodir是可选项，如果不设置编辑的文件目录下会产生名为<code>.&lt;FILENAME&gt;.un~</code>的隐藏文件，对于git进行版本控制的文件来说还需要设置.gitignore,因此还是将这些文件归入到同一文件夹(undodir)中为好。
+undodir指向必须手动创建，如果不存在VIM不会自动生成。</li>
+</ul>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">has</span><span class="p">(</span><span class="s">&quot;persistent_undo&quot;</span><span class="p">)</span>
+    <span class="n">set</span> <span class="n">undofile</span>
+    <span class="n">set</span> <span class="n">undodir</span><span class="o">=</span><span class="err">$</span><span class="n">VIMFILES</span><span class="o">/</span><span class="err">\</span><span class="n">_undodir</span>
+    <span class="n">set</span> <span class="n">undolevels</span><span class="o">=</span><span class="mi">1000</span>
+    <span class="n">set</span> <span class="n">undoreload</span><span class="o">=</span><span class="mi">10000</span>
+<span class="n">endif</span>
+</pre></div>
+
+
+<h4>撤销分支</h4>
+<p>场景：<br />
+用户在状态A，做了一系列编辑到了状态B，然后通过撤销操作(<code>u</code>)回到A，又完成了一系列操作到状态C，这时用户觉得状态B才是最终想要的结果，想回到状态B？
+为了解决类似这种问题，vim引入了<strong>撤销分支</strong>的概念，保证撤销操作能回到之前的任何一个分支状态。
+TODO:图例</p>
+<ul>
+<li><code>:undolist</code> 显示撤销列表，<code>:undo+编号</code>撤销到某个分支</li>
+<li><code>g-</code>,<code>g+</code>返回较早的文本状态和返回较新的文本状态</li>
+<li><code>:earlier 10m</code> 恢复到十分钟前的文本状态，<code>:later 5s</code>跳转到5秒钟后的状态</li>
+</ul>
+<p><code>u</code>和<code>Ctrl+R</code>是使用频率最高的撤销操作，能解决简单的回退和重做问题。但是对于做过多次回退操作的文本，想精确的回到某个状态时，我们不得不使用<em>撤销分支</em>操作，可是VIM中相关命令并不直观，而且无法准确预计执行后的结果。Undotree插件就是为解决这个问题诞生的，为<em>撤销分支</em>操作提供了"可视化"操作。</p>
+<h3>Undotree的安装</h3>
+<p>vim7.3+
+TODO</p>
+<h3>Undotree的操作</h3>
+<p>先上图：
+<img alt="'undotree示例'" src="images/vim-undotree-sample.png" /></p>
+<p>触发Undotree命令<code>:UndotreeToggle</code>
+一般触发设置成快捷键，我设的是<leader>ut</p>
+<div class="highlight"><pre><span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nx">ut</span> <span class="p">:</span><span class="nx">UndotreeToggle</span><span class="o">&lt;</span><span class="nx">CR</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>你可以在主窗口或者撤销树窗口里使用<code>u</code>、<code>Ctrl+R</code>、<code>g-</code>等命令进行操作，对应的其他窗口也会同时发生变化</p>
+<p>可在undotree窗口中按<code>?</code>查看快捷键和标记的意义:<br />
+快捷键:
+- <code>回车</code>或<code>双击鼠标左键</code>:撤销到选择的撤销树状态
+- <code>u</code>: 撤销
+- <code>Ctrl+R</code>: 重做 
+- <code>C</code>:清除所有撤销历史
+- <code>D</code>:关闭/开启diff窗口
+- <code>T</code>:切换绝对时间和相对时间的显示
+- <code>&lt;TAB&gt;</code>:切换到主窗口
+- <code>q</code>:退出
+标记:
+- <code>&gt;num&lt;</code> : 当前的状态 
+- <code>{num}</code> : 执行redo到达的状态
+- <code>[num]</code> : 上次改变状态的位置 
+- s   : 在这个状态曾经保存过 
+- S   : 上一次保存的位置 </p>
+<h3>Undotree的配置</h3>
+<p>窗口布局，默认为1，可选值1-4</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">undotree_WindowLayout</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>undotree口的宽度,diff窗口，默认为30和10</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">undotree_SplitWidth</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">undotree_DiffpanelHeight</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+
+
+<p>撤销时间默认显示时间还是绝对时间，默认值为相对时间</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">undotree_RelativeTimestamp</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>撤销树节点显示的符号</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">undotree_TreeNodeShape</span> <span class="o">=</span> <span class="sc">&#39;*&#39;</span>
+</pre></div>
+
+
+<p>出发undotree后，undotree窗口是否获得焦点，默认为否</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">undotree_SetFocusWhenToggle</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<h3>Undotree与Gundo的比较</h3>
+<p>Gundo是我在Undotree之前使用的撤销插件，和Undotree非常相似，核心功能近乎一致。
+Undotree的作者提出了Undotree与Gundo相比的优势，深以为然。<br />
+1. Undotree通过Vimscript编写，Gundo依赖需要依赖Python环境
+2. Undotree的撤销树是实时变化的，一旦你作出改变，撤销树就同时发生变化 
+3. 在撤销树上有标记，可以标记当前恢复的点，下一次撤销操作执行的位置 
+4. 撤销时间点的显示可以在绝对时间和相对时间切换
+5. 实时更新撤销窗口
+6. 可以清理撤销历史
+7. 具有更强的可定制性</p>
+<h3>小结</h3>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

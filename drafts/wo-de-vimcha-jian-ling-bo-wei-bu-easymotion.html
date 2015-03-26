@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>我的vim插件--凌波微步easymotion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="../theme/js/headroom.js"></script> -->
+    <!-- <link rel="stylesheet" href="../theme/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/foundation.min.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/style.css" /> -->
+    <!-- <link rel="stylesheet" href="../theme/css/pygments.css" />	 -->
+    <style type="text/css">
+        body { 
+            padding-top: 50px;
+            background-image: url("../theme/images/wood.jpg");
+        }
+        #footer-line { 
+            border-bottom: 1px solid #7e5328;
+            box-shadow: 0 1px #ffdeb4;
+            margin-bottom:8px;
+        }
+        #navimg {margin:0 20px 0 0;padding:0;border:1px;}
+        #main{
+            background: url("../theme/images/grid-18px-masked.png") repeat scroll center top #fff;
+            box-shadow: 0 1px 15px rgba(0, 0, 0, 0.6);
+            padding-bottom:50px;
+            margin-bottom:50px;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a id="navimg" class="navbar-brand" href="#">
+              <img height="50" class="img-circle" alt="Brand" src="../theme/images/header.jpg">
+          </a>
+          <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <a class="navbar-brand" href="..">践行见远</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">首页</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="../category/vim.html">vim</a></li>
+                    <li><a href="../category/wei-fen-lei.html">未分类</a></li>
+                </ul>
+            </li>
+            <li>
+              <a href="../archives.html">归档</a>
+            </li>
+            <li>
+                <a href="../tags.html">Tags</a>
+            </li>
+            <li>
+                <a href="../feeds/all.rss.xml">RSS</a>
+            </li>
+            <li>
+              <a href="#">关于</a>
+            </li>
+          </ul>
+
+          <!-- <form class="navbar-form navbar-right" role="search"> -->
+            <!-- <div class="form-group"> -->
+              <!-- <input type="text" class="form-control" placeholder="Search"> -->
+            <!-- </div> -->
+            <!-- <button type="submit" class="btn btn-default">站内搜索</button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div  class="col-md-2">
+        </div>
+        <div id="main" class="col-md-8">
+<article>
+    <header>
+        <h3 class="article-title"><a href="../drafts/wo-de-vimcha-jian-ling-bo-wei-bu-easymotion.html" rel="bookmark"
+        title="Permalink to 我的vim插件--凌波微步easymotion">我的vim插件--凌波微步easymotion</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-08-07T00:00:00">2014年08月07日
+</h6>
+
+
+    <h3>easymotion简介</h3>
+<p>在vim中我们经常使用<code>f</code>,<code>b</code>,<code>e</code>等命令来快速移动光标，在字符数不是太多的一行中使用<code>f</code>,<code>b</code>,<code>e</code>命令移动光标还是比较快捷高效的，但跨多行或者较长的一行中移动时，这些命令就显得比较笨拙。easymotion这个插件是对这种操作方式的一个极大增强，让你的光标达到瞬移的目的。</p>
+<h3>easymotion安装</h3>
+<p>TODO</p>
+<h3>easymotion使用</h3>
+<p>easymotion输入快捷键和需要到达的字符，如果只有一个目标，那光标会直接跳转到目标位置，如果右多个目标可选，检索范围会“褪色”，候选目标位置高亮并且标识为“触发键”,按“触发键”即可跳转到目标位置。如图所示：
+TODO</p>
+<h4>基本功能</h4>
+<blockquote>
+<p><strong>easymotion</strong>为了让快捷键不与其他插件冲突，默认用<code>&lt;leader&gt;&lt;leader&gt;</code>代替<code>&lt;leader&gt;</code>,本节使用<code>&lt;leader&gt;</code>代表默认模式下的<code>&lt;leader&gt;&lt;leader&gt;</code></p>
+</blockquote>
+<p>默认快捷键：  </p>
+<ul>
+<li><code>&lt;leader&gt;f{char}</code>   向下检索{char}字符(注：下即下文，上为上文)</li>
+<li><code>&lt;leader&gt;F{char}</code>   向检索{char}字符</li>
+<li><code>&lt;leader&gt;t{char}</code>   向下检索{char}字符,索引符在{char}字符左边</li>
+<li><code>&lt;leader&gt;T{char}</code>   向上检索{char}字符,索引符在{char}字符右边</li>
+<li><code>&lt;leader&gt;w</code>   向下检索word头(注：vim中word和WORD的区别，可通过<code>:h w</code>,<code>:h W</code>查阅帮助</li>
+<li><code>&lt;leader&gt;W</code>   向下检索WORD头</li>
+<li><code>&lt;leader&gt;b</code>   向上检索word头</li>
+<li><code>&lt;leader&gt;B</code>   向上检索WORD头</li>
+<li><code>&lt;leader&gt;e</code>   向下检索word尾</li>
+<li><code>&lt;leader&gt;E</code>   向下检索WORD尾</li>
+<li><code>&lt;leader&gt;j</code>   向下检索行</li>
+<li><code>&lt;leader&gt;k</code>   向上检索行 </li>
+<li><code>&lt;leader&gt;n</code>   向上跳转到上次<code>/</code>,<code>?</code>检索的位置 </li>
+<li><code>&lt;leader&gt;N</code>   向下跳转到上次<code>/</code>,<code>?</code>检索的位置 </li>
+<li><code>&lt;leader&gt;s{char}</code>   向上、向下同时检索{char}字符</li>
+</ul>
+<p>以上默认的快捷键基本上和vim按键含义一致，当然插件也提供了很多模式，扩展了默认的移动方式。</p>
+<h4>双向移动</h4>
+<p>检索时为全文检索，而无方向性,例如</p>
+<div class="highlight"><pre><span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">leader</span><span class="o">&gt;</span><span class="nb">f</span> <span class="o">&lt;</span><span class="nx">Plug</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">easymotion</span><span class="na">-bd-f</span><span class="p">)</span>
+</pre></div>
+
+
+<blockquote>
+<p>bd是idirectional的缩写</p>
+</blockquote>
+<h4>行内移动</h4>
+<p>检索操作限制在当前行,例如
+<code>&lt;Plug&gt;(easymotion-tl)</code> 限制了默认<code>&lt;leader&gt;t{char}</code>的检索范围为当前行,其实这个更接近<code>t</code>键的原来含义,建议配置使用.
+<code>&lt;Plug&gt;(easymotion-bd-fl)</code> 在当前行内双向检索关键字目标
+你会发现<strong>行内移动</strong>与vim原来的移动模式非常接近.</p>
+<h4>双字符和多字符检索模式</h4>
+<p><code>&lt;Plug&gt;(easymotion-s2)</code>,<code>&lt;Plug&gt;(easymotion-sn)</code> 这两个映射增强了默认快捷键<code>&lt;leader&gt;s{char}</code>，可以通过两个和多个字符检索目标位置</p>
+<p>更多的键盘映射可通过<code>h easymotion-plug-table</code>查阅帮助。</p>
+<h3>easymotion配置</h3>
+<p>easymotion如上一部分所示，提供了许多默认快捷键，如果想禁用这些默认的映射将<code>g:EasyMotion_do_mapping</code>设为0,默认为1</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">EasyMotion_do_mapping</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+
+
+<p>检索时不区分大小写</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">EasyMotion_smartcase</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>是否启用"触发键"智能匹配，如果设为1,按<code>3</code>会匹配<code>3</code>和<code>#</code>,默认为否0</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">EasyMotion_use_smartsign_us</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>触发键设置，默认为<code>abcdefghijklmnopqrstuvwxyz;</code></p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">EasyMotion_keys</span> <span class="o">=</span> <span class="err">&#39;</span><span class="mi">1234567890</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>默认把被检索的区域都"阴影化","触发键"高亮显示,如果想去掉这个模式把<code>g:EasyMotion_do_shade</code>设为0，默认为1</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">EasyMotion_do_shade</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>把触发键改为大写字母，但是选择的时候还是以小写</p>
+<div class="highlight"><pre><span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">EasyMotion_use_upper</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">let</span> <span class="n">g</span><span class="o">:</span><span class="n">EasyMotion_keys</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span><span class="p">;</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<h3>使用心得</h3>
+<p>这个插件的可定制性非常高，根据自己的习惯和需要，配上快捷键即可。我对该插件的配置如下：</p>
+<div class="highlight"><pre><span class="nx">nmap</span> <span class="nb">s</span> <span class="o">&lt;</span><span class="nx">Plug</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">easymotion</span><span class="na">-s</span><span class="p">)</span>
+<span class="nx">omap</span> <span class="nb">t</span> <span class="o">&lt;</span><span class="nx">Plug</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">easymotion</span><span class="na">-bd-tl</span><span class="p">)</span>
+<span class="nx">nmap</span> <span class="o">&lt;</span><span class="nx">Leader</span><span class="o">&gt;</span><span class="nb">s</span> <span class="o">&lt;</span><span class="nx">Plug</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">easymotion</span><span class="na">-sn</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">EasyMotion_smartcase</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">EasyMotion_use_smartsign_us</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">EasyMotion_use_upper</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">let</span> <span class="n">g</span><span class="p">:</span><span class="n">EasyMotion_keys</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ;&#39;</span>
+</pre></div>
+
+
+<p>1.<code>s</code>设为双向单字符检索移动的快捷键，这样只按3到4键即可到达屏幕任何位置,而且只需要记住这一个主要快捷键
+2.另外将<code>t</code>键设为双向的行内检索模式,这样相当于扩充了vim默认<code>t</code>键的功能,例如文本
+<code>aaaa,bbbb,cccc,d</code>，光标在第一个a位置，以前执行<code>dt,</code>可以删除掉第一个逗号之前的文本，对<code>t</code>增强后就可以按需要删除到本行哪一个逗号之前的文本。
+3.将触发键设为大写是为了让视觉上更清晰
+4.检索忽略大小写，目的是为了少按<code>Shift</code>提高效率，简化按键思维</p>
+<p class="subheader">分类: <a href="../category/vim.html">vim</a>
+
+    标签: 
+    <a href="../tag/vim.html">vim </a>
+</p>
+
+
+
+
+    <!-- 多说评论 -->
+</article>
+        </div>
+        <!-- 右侧栏 -->
+        <div class="col-md-2">
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div  class="col-md-2">
+            </div>
+            <div  class="col-md-8" id="footer">
+                <div id="footer-line"></div>
+                <div><p class="text-center">Power By <a
+                            href="getpelican.com">Pelican</a> & Bootstrap3
+                        Copyright © 2014 jakerxu</p><div> 
+            </div>
+            <div  class="col-md-2">
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

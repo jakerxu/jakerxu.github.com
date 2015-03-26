@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>践行见远</title><link href="http://jakerxu.github.io/" rel="alternate"></link><link href="http://jakerxu.github.io/feeds/all-zh.atom.xml" rel="self"></link><id>http://jakerxu.github.io/</id><updated>2015-03-26T00:00:00+08:00</updated><entry><title>我的vim插件--无处遁形的文件ctrlp</title><link href="http://jakerxu.github.io/wo-de-vimcha-jian-wu-chu-dun-xing-de-wen-jian-ctrlp.html" rel="alternate"></link><updated>2014-07-29T00:00:00+08:00</updated><author><name>践客</name></author><id>tag:jakerxu.github.io,2014-07-29:wo-de-vimcha-jian-wu-chu-dun-xing-de-wen-jian-ctrlp.html</id><summary type="html">&lt;h3&gt;ctrlp简介&lt;/h3&gt;
+&lt;p&gt;可以对文件、缓冲区，最近最多使用，标签进行检索，支持vim的正则表达式
+ctrlp是一个看似简单，但是功能十分强大的插件，配合NERDTree使用基本上可以满足绝大部分查找、打开文件的情况&lt;/p&gt;
+&lt;h3&gt;ctrlp安装&lt;/h3&gt;
+&lt;h3&gt;ctrlp使用&lt;/h3&gt;
+&lt;p&gt;ctrlp可以搜索三类文件：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;:CtrlP&lt;/code&gt; 普通的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:CtrlPBuffer&lt;/code&gt; 已经打开的buffer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:CtrlPPMRU&lt;/code&gt; 最近打开的文件(mru files)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+P&lt;/code&gt; 调出插件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+F&lt;/code&gt;、&lt;code&gt;Ctrl+B&lt;/code&gt;在各个模式中切换直接输入要搜索的内容&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl+J&lt;/code&gt;、&lt;code&gt;Ctrl+K&lt;/code&gt;在结果文件中上下选择&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl+O&lt;/code&gt; 打开文件，提示打开文件的方式：
+        t - 在新标签页中打开。
+        v - 在一个竖直分割窗口中。
+        h - 在一个水平分割窗口中。
+        r - 在当前窗口中打开。
+        i - 在隐藏的缓冲区中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+ T&lt;/code&gt; 直接在新的标签页中打开&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+ V&lt;/code&gt;，在新的分割窗口中打开（纵向分割）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+ X&lt;/code&gt;，&lt;code&gt;Ctrl+Enter&lt;/code&gt;，&lt;code&gt;Ctrl+S&lt;/code&gt; 在新的分割窗口中打开（横向分割）&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl+ N&lt;/code&gt;、&lt;code&gt;Ctrl+P&lt;/code&gt; 切换之前搜索过的模式及结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl+D&lt;/code&gt; 可以切换“全路径搜索”和“按文件名搜索”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+R&lt;/code&gt; 可以切换为正则表达式搜索&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Z&lt;/code&gt; 可以标记(取消标记)多个文件，然后用&lt;code&gt;Ctrl+O&lt;/code&gt;打开&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+U&lt;/code&gt; 清除输入&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Esc&lt;/code&gt;，&lt;code&gt;Ctrl+C&lt;/code&gt; 退出CtrlP。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;ctrlp配置&lt;/h3&gt;
+&lt;p&gt;设定ctrlp的绑定按键和打开的命令，既然ctrlp叫ctrlp一般不会更改:)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ctrlp_map&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ctrlp_cmd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;CtrlP&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;插件开关,默认1启用，0禁用&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;loaded_ctrlp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;默认0按全路径搜索，1按文件名搜索，在提示面板上可以通过&lt;code&gt;Ctrl+D&lt;/code&gt;来切换&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ctrlp_by_filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;是否使用正则表达式匹配，在提示面板上可以通过&lt;code&gt;Ctrl+R&lt;/code&gt;来切换&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ctrlp_regexp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ctrlp_match_window来设置ctrlp窗口的位置和显示条数
+- 位置: (默认:底部)
+    - top - 在屏幕顶部显示匹配窗口。
+    - bottom - 在屏幕底部显示匹配窗口。
+- 结果的排列顺序: (默认: btt)
+    - order:ttb - 从顶部到底部。
+    - order:btt - 从底部到顶部。
+- 最小和最大高度:
+    - min:{n} - 最少显示 {n} 行 (默认: 1)。
+    -  max:{n} - 最多显示 {n} 行 (默认: 10)。
+- 结果集的最大数目：
+    - results:{n} - 列出最多 {n} 条结果 (默认: 和最大高度同步)。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ctrlp_match_window&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;bottom&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;order&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;btt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;TODO:ctrlp_working_path_mode&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ctrlp_working_path_mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ra&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;详细的设置可以再ctrlp窗口提交&lt;code&gt;?&lt;/code&gt;或者执行&lt;code&gt;:h ctrlp&lt;/code&gt;查阅帮助文档，该插件的文档已经被翻译成中文，感谢译者。&lt;/p&gt;</summary><category term="vim"></category></entry><entry><title>我的vim插件--HTML编写利器Emmet</title><link href="http://jakerxu.github.io/wo-de-vimcha-jian-htmlbian-xie-li-qi-emmet.html" rel="alternate"></link><updated>2014-07-21T00:00:00+08:00</updated><author><name>践客</name></author><id>tag:jakerxu.github.io,2014-07-21:wo-de-vimcha-jian-htmlbian-xie-li-qi-emmet.html</id><summary type="html">&lt;!--Status:draft--&gt;
+
+&lt;h3&gt;emmet简介&lt;/h3&gt;
+&lt;p&gt;Emmet 项目原来叫 Zen Coding。由俄罗斯前端开发工程师 Sergey Chikuyonok 开发，后来在 Google Code 上释出 Zen Coding 项目，2012年更名为Emmet。
+Emmet 官方支持很多软件，比如 Sublime Text、Notepad++、Dreamweaver、Eclipse、Adobe Brackets 等。Emmet.vim 并非 Emmet 官方出品，它由日本 Yasuhiro Matsumoto 开发。&lt;/p&gt;
+&lt;h3&gt;emmet.vim 安装&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;传统安装方式
+你可以从两个地址下载，一是Vim 插件站点，一是Github&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/.vim
+unzip emmet-vim.zip
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;pathogen.vim 方式管理插件
+在vim配置文件中增加：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;mattn&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;emmet&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;vim&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后在vim中执行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;BundleInstall&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;emmet for vim 基本用法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;emmet在vim中的默认触发快捷键是&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;,&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;展开缩写（Expand Abbreviation）模式&lt;/strong&gt;&lt;br /&gt;
+在插入模式下输入&lt;code&gt;html5&lt;/code&gt;或者&lt;code&gt;!&lt;/code&gt;
+再输入&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;,&lt;/code&gt; (注意：仍然在插入模式下)，会得到如下html文本：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&lt;/span&gt; &lt;span class="na"&gt;lang=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;charset=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;类似的缩写还有:&lt;code&gt;html:4s&lt;/code&gt;, &lt;code&gt;html:4t&lt;/code&gt;, &lt;code&gt;html:xs&lt;/code&gt;, &lt;code&gt;html:xt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;emmet支持的缩略词模式的语法&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;E、N&lt;/code&gt;代表HTML标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E&amp;gt;N&lt;/code&gt; 代表N是E的子元素&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E+N&lt;/code&gt; 代表N是E的同级元素&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E^N&lt;/code&gt; 代表N是E的上级元素&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E#id&lt;/code&gt;代表id属性&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E.class&lt;/code&gt;代表class属性&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E{foo}&lt;/code&gt; 标签包含文本foo&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;E*n&lt;/code&gt; 产生n个相同标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;foo$@m*n&lt;/code&gt; 代表foo为自增变量，起始值为m(默认为1)，即foom，foo(m+1)...foo(m+n-1);
+$同时还是占位符，如$$$表示递增值补齐为3位，不足前补零;若n前有-号，递增方向相反。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[attr=foo]&lt;/code&gt; 代表某一个特定属性(可自定义)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;示例:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写：nav&amp;gt;div&amp;gt;div+p^span
+&lt;span class="nt"&gt;&amp;lt;nav&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写:div#test&amp;gt;span.cls
+&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cls&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写:div#test&amp;gt;span.cls1.cls2.cls3
+&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cls1 cls2 cls3&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写：p{foo}
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;foo&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写:ul&amp;gt;li.cls$$$@-8*3
+&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;li&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cls010&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;li&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cls009&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;li&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cls008&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写：div[attr1=foo1 attr2=foo2]
+&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;attr1=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;foo1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;attr2=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;emmet对每个html标签几乎都有缩写的支持，能极大提升书写html的效率，把更多的时间用于思考,例如:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写: input:t
+&lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写: table+
+&lt;span class="nt"&gt;&amp;lt;table&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写：cc:ie6
+&lt;span class="c"&gt;&amp;lt;!--[if lte IE 6]&amp;gt;&lt;/span&gt;
+
+&lt;span class="c"&gt;&amp;lt;![endif]--&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;更多缩写请参考：
+http://docs.emmet.io/cheat-sheet/
+目前该插件只实现了HTML部分CSS部分尚未实现&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在编写HTML代码时，有时需要添加一些内容，Emmet提供了一段随机的看不懂的英文字段，作为测试数据我们就可以调用。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写：lorem
+Lorem harum nulla cumque facilis adipisci facilis. Facere quia sint aspernatur rerum cum culpa eum totam? Reprehenderit magni beatae alias voluptates minima. Doloremque illo eligendi cumque similique libero sed ad.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写：lorem5
+Ipsum amet culpa minus enim!
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也可以和其他命令结合使用，生成测试数据(在此功能上还存在缺陷,无法支持类似&lt;code&gt;p#id&amp;gt;lorem4.class*4&lt;/code&gt;这种写法)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;缩写：p*4&amp;gt;lorem4.class
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Amet libero facilis maxime.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Elit vitae optio perspiciatis!&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Amet maiores odio enim.&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Amet maiores deserunt vero?&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;扩展缩写(Wrap with Abbreviation)模式&lt;/strong&gt;&lt;br /&gt;
+输入如下内容:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;test1&lt;/span&gt;
+&lt;span class="n"&gt;test2&lt;/span&gt;
+&lt;span class="n"&gt;test3&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;Shift+v&lt;/code&gt;进入可视模式，“行选取”上面三行内容，然后按键 &lt;code&gt;Ctrl+Y&lt;/code&gt;+&lt;code&gt;,&lt;/code&gt;,这时 Vim 的命令行会提示 &lt;code&gt;Tags:&lt;/code&gt;，键入&lt;code&gt;ul&amp;gt;li*&lt;/code&gt;，然后按 Enter,会得到如下文本：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;test1&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;test2&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;test3&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;TODO:$#可以控制文本输出的位置 &lt;/p&gt;
+&lt;h3&gt;快捷键介绍&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;n&lt;/code&gt;  【插入模式】跳转到下一个编辑点&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;N&lt;/code&gt;  【插入模式】跳转到上一个编辑点&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;d&lt;/code&gt;  【插入模式】根据光标位置选中整个标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;D&lt;/code&gt;  【插入模式】根据光标位置选中整个标签内容&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;k&lt;/code&gt;  【插入模式】【普通模式】删除标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;j&lt;/code&gt;  【插入模式】【普通模式】分割/合并标签，单标签(没有结尾标签)和双标签切换&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;/&lt;/code&gt;  【注释模式】注释标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;m&lt;/code&gt;  【可视模式】合并行 &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;a&lt;/code&gt;  【普通模式】【可视模式】通过URL生成a标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;输入文本：http://www.sina.com.cn，按键 &lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;,&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.sina.com.cn&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;新浪首页&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;居然自动取URL的HTML文本的title值作为a标签的文本，神奇！若未联入互联网，则文本为空&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;A&lt;/code&gt;  【普通模式】【可视模式】通过URL生成引用文本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;i&lt;/code&gt;   更新img标记的图片大小，仅本地图片可用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Ctrl+Y&lt;/code&gt; + &lt;code&gt;c&lt;/code&gt;   【可视模式】把程序代码转换为html&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;高级用户可对快捷键键盘映射进行重新定义，&lt;code&gt;:h emmet&lt;/code&gt;查询帮助文件，搜索 &lt;code&gt;emmet-customize-keymappings&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;可配置项&lt;/h3&gt;
+&lt;p&gt;修改缩进值&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;user_emmet_settings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;indentation&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39; &amp;#39;&lt;/span&gt;
+  &lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;定义不同文件类型的简写扩展, 例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;user_emmet_settings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;php&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;extends&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;filters&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;xml&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;extends&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;haml&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;extends&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;user_emmet_settings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="s1"&gt;&amp;#39;lang&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ja&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;filters&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;indentation&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="s1"&gt;&amp;#39;perl&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;indentation&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;  &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;aliases&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;      &lt;span class="s1"&gt;&amp;#39;req&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;require &amp;#39;|&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;snippets&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;      &lt;span class="s1"&gt;&amp;#39;use&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;use strict\nuse warnings\n\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;      &lt;span class="s1"&gt;&amp;#39;w&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;warn \&amp;quot;${cursor}\&amp;quot;;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="s1"&gt;&amp;#39;php&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;extends&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;filters&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;html,c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="s1"&gt;&amp;#39;css&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;filters&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;fc&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="s1"&gt;&amp;#39;javascript&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="s1"&gt;&amp;#39;snippets&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;      &lt;span class="s1"&gt;&amp;#39;jq&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$(function() {\n\t${cursor}${child}\n});&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;      &lt;span class="s1"&gt;&amp;#39;jq:each&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$.each(arr, function(index, item)\n\t${child}\n});&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;      &lt;span class="s1"&gt;&amp;#39;fn&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;(function() {\n\t${cursor}\n})();&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;      &lt;span class="s1"&gt;&amp;#39;tm&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;setTimeout(function() {\n\t${cursor}\n}, 100);&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;    &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;java&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="s1"&gt;&amp;#39;indentation&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;    &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="s1"&gt;&amp;#39;snippets&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;   &lt;span class="s1"&gt;&amp;#39;main&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;public static void main(String&lt;/span&gt;&lt;span class="cp"&gt;[]&lt;/span&gt;&lt;span class="s2"&gt; args) {\n\t|\n}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;   &lt;span class="s1"&gt;&amp;#39;println&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;System.out.println(\&amp;quot;|\&amp;quot;);&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;   &lt;span class="s1"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;public class | {\n}\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;  &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;修改默认触发快捷键：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;user_emmet_expandabbr_key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果完成tags要使用omnifunc方式，添加如下配置，关于omnifunc请通过&lt;code&gt;h omnifunc&lt;/code&gt;查询帮助&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;use_emmet_complete_tag&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;让emmet只对html,css生效&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;user_emmet_install_global&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="n"&gt;autocmd&lt;/span&gt; &lt;span class="n"&gt;FileType&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;css&lt;/span&gt; &lt;span class="n"&gt;EmmetInstall&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;修改emmet插件的使用模式范围,n代表普通模式，i代表插入模式，v代表可视模式&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;user_emmet_mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;n&amp;#39;&lt;/span&gt;   &lt;span class="s"&gt;&amp;quot; 只保留普通模式下的功能&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;user_emmet_mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;iv&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;  &lt;span class="s"&gt;&amp;quot; 只保留插入模式和可视模式下的功能&lt;/span&gt;
+&lt;span class="n"&gt;let&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;user_emmet_mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;   &lt;span class="s"&gt;&amp;quot; 支持所有模式&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;自定义snippets&lt;br /&gt;
+由于这个功能需要依赖插件作者的另一个插件web-api,而web-api插件需要依赖curl或者wget,这样使得跨平台使用显得非常繁琐，而这个自定义功能可通过之前介绍的xxx插件来完成。
+如果依然对此有兴趣，可查阅插件帮助，搜索&lt;strong&gt;Adding custom snippets&lt;/strong&gt;,并参考&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="http://docs.emmet.io/customization/snippets/"&gt;http://docs.emmet.io/customization/snippets/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;小结&lt;/h3&gt;
+&lt;p&gt;emmet功能异常的强大，对于经常手写HTML代码的前端攻城狮来说简直是必备神器，对于emmet for vim 唯一遗憾的是，作者还没开发css扩展的部分，比起Sublime Text2版本的插件，稍有逊色。但是从github上状态看，该项目还在不断的开发中，建议使用者时不时的更新，或许会有意外的惊喜。&lt;/p&gt;</summary><category term="vim"></category></entry><entry><title>我的VIM插件--开篇</title><link href="http://jakerxu.github.io/wo-de-vimcha-jian-kai-pian.html" rel="alternate"></link><updated>2015-03-26T00:00:00+08:00</updated><author><name>践客</name></author><id>tag:jakerxu.github.io,2014-07-16:wo-de-vimcha-jian-kai-pian.html</id><summary type="html">&lt;!--Status:draft--&gt;
+
+&lt;h3&gt;开篇&lt;/h3&gt;
+&lt;p&gt;大学时初识vim，觉得这货实在是太难用了，差点错过了这个神器，直到两年前看到了"善用佳软"的介绍再次上手，顿觉相见恨晚！vim的学习曲线略陡峭，期间反复折腾，反复使用，终于找到点感觉，到最后反而庆幸自己的坚持。插件机制是vim获得“神力”的主要原动力，但是由于vim的开源开放的特点，使得vim插件的质量参差不齐插件间也会存在冲突，好的插件能让我们事半功倍，但是插件的选择和调试有时候也会成为vimer的噩梦，我希望通过一个系列文章分享我使用的vim插件，与大家多交流心得，让后来者的学习之路能变得平坦些。&lt;/p&gt;
+&lt;h3&gt;为什么用VIM？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;跨平台:我工作的主要环境是windows，偶尔也会切换到linux和类unix系统，非工作时间主要使用mac， vim在不同的平台下的使用体验基本保持一致(我使用GUI版本，很少使用terminal下的vim)&lt;/li&gt;
+&lt;li&gt;适用于大部分文本编辑场景:目前主要用于编写python、c、markdown文档、配置文档等&lt;/li&gt;
+&lt;li&gt;高度可定制:有大量的插件可以使用，可以修改键盘映射，总之能铸造出属于自己的独一无二的vim， 对于geek、爱折腾的人来说简直是不可多得的玩物&lt;/li&gt;
+&lt;li&gt;强大的帮助文档:vim的帮助系统好用程度简直令人发指， 并且可以安装中文帮助(之后会介绍)&lt;/li&gt;
+&lt;li&gt;提升效率:工具价值就是让你的工作更有效， vim使用全键盘操作， 在编辑的时候无需离开键盘区， 另外自定义的功能和快捷键能让你随心所欲地控制文字，并且避免重复劳动&lt;/li&gt;
+&lt;li&gt;编辑之美:原生的vim是简陋的(这可能会引起一些有极简主义倾向的朋友的反感)，但是经过配置， 无论是写文章还是coding都会有一种美的享受。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;适合的读者&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;有使用VIM经验者， 希望提高vim使用技巧&lt;/li&gt;
+&lt;li&gt;不适合刚准备开始学习VIM初学者&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;我选择插件标准&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;基本不影响打开的速度和使用的流畅性&lt;/li&gt;
+&lt;li&gt;使用原生vimScripts编写优先&lt;/li&gt;
+&lt;li&gt;跨平台使用(win， mac，linux)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;直达电梯&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;我的VIM插件(1)&lt;/li&gt;
+&lt;li&gt;我的VIM插件(2)&lt;/li&gt;
+&lt;li&gt;我的VIM插件(3)&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="vim"></category></entry><entry><title>About Me</title><link href="http://jakerxu.github.io/about-me.html" rel="alternate"></link><updated>2014-07-15T00:00:00+08:00</updated><author><name>践客</name></author><id>tag:jakerxu.github.io,2014-07-14:about-me.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;ID: &lt;code&gt;践客&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;坐标：宁波&lt;/li&gt;
+&lt;li&gt;80后，&lt;del&gt;理想主义者&lt;/del&gt;，&lt;del&gt;完美主义&lt;/del&gt;，轻度拖延症，间歇性话痨，典型巨蟹男&lt;/li&gt;
+&lt;li&gt;银行IT从业人员，渴望成为产品经理，设计出自己的互联网产品&lt;/li&gt;
+&lt;li&gt;Pythoner, VIMer, &lt;del&gt;Javaer&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;阿迷&lt;/li&gt;
+&lt;/ul&gt;</summary></entry></feed>
